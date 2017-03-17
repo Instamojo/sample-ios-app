@@ -10,7 +10,7 @@ import UIKit
 import Instamojo
 
 class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegate {
-
+    
     @IBOutlet var payButton: UIButton!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var selectedEnv: UILabel!
@@ -37,7 +37,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.juspayCallBack), name: notificationName, object: nil)
         environment = ["Production Environment": "production", "Test Environment": "test"]
-
+        
         //Delegate texfield to handle next button click on keyboard
         self.amountTextField.delegate = self
         self.emailTextField.delegate = self
@@ -47,24 +47,24 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         self.textField = self.nameTextField
     }
-
+    
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = Int(keyboardSize.height) - 100
         }
     }
-
+    
     func juspayCallBack() {
         if UserDefaults.standard.value(forKey: "USER-CANCELLED") != nil {
             self.showAlert(errorMessage: "Transaction cancelled by user, back button was pressed.")
         }
-
+        
         if UserDefaults.standard.value(forKey: "ON-REDIRECT-URL") != nil {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.checkPaymentStatus()
             }
         }
-
+        
         if UserDefaults.standard.value(forKey: "USER-CANCELLED-ON-VERIFY") != nil {
             self.showAlert(errorMessage: "Transaction cancelled by user when trying to verify payment")
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
@@ -72,11 +72,11 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func environmentSelection(_ sender: UISwitch) {
         if sender.isOn {
             selectedEnv.text = "Production Environment"
@@ -88,7 +88,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             Logger.logDebug(tag: "Environment", message: environment[selectedEnv.text!]!)
         }
     }
-
+    
     func defaultData() {
         nameTextField.text = "Sukanya"
         emailTextField.text = "sukanya@innoventestech.com"
@@ -96,16 +96,16 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         amountTextField.text = "10.00"
         descriptionTextField.text = "Test Description"
     }
-
+    
     @IBAction func showPaymentView(_ sender: Any) {
         payButton.isEnabled = false
         self.textField.resignFirstResponder()
         scrollView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
-        spinner.show()
         fetchOrder()
     }
-
+    
     func fetchOrder() {
+        spinner.show()
         let url: String = "https://sample-sdk-server.instamojo.com/create"
         let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "POST"
@@ -114,27 +114,25 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         request.setBodyContent(parameters: params)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-
+        
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, _, error -> Void in
-            self.spinner.hide()
-            self.payButton.isEnabled = true
             if error == nil {
                 do {
                     if let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: []) as?  [String:Any] {
                         Logger.logDebug(tag: "Dictonary", message: String(describing: jsonResponse))
                         if jsonResponse["error"] != nil {
                             if let errorMessage = jsonResponse["error"] as? String {
-                             Logger.logError(tag: " Sample - Fetch Token", message: errorMessage)
+                                Logger.logError(tag: " Sample - Fetch Token", message: errorMessage)
                                 // Show an alert with the error message recieved from the server
                                 self.showAlert(errorMessage: errorMessage)
                             }
                         } else {
-
+                            
                             Logger.logDebug(tag: " Sample - Fetch Token", message: "Response: \(jsonResponse)")
-
+                            
                             let transactionID = jsonResponse["transaction_id"] as? String
                             let accessToken = jsonResponse["access_token"] as? String
-
+                            
                             //Create an order using the transaction_id and access_token recieved
                             self.createOrder(transactionID: transactionID!, accessToken: accessToken!)
                         }
@@ -150,25 +148,28 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         })
         task.resume()
     }
-
+    
     func createOrder(transactionID: String, accessToken: String) {
         self.transactionID = transactionID
         self.accessToken = accessToken
-
         let order = self.formAnOrder(transactionID: transactionID, accessToken: accessToken)
-
         if order.isValidToCreateOrder().validity {
-            self.spinner.show()
             let request = Request.init(order: order, orderRequestCallBack: self)
             request.execute()
         } else {
             DispatchQueue.main.async {
                 self.spinner.hide()
-                self.showAlert(errorMessage: order.isValid().error)
+                self.payButton.isEnabled = true
             }
+            self.showAlert(errorMessage: order.isValidToCreateOrder().error)
         }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.payButton.isEnabled = true
+    }
+    
     func formAnOrder(transactionID: String, accessToken: String) -> Order {
         let buyerName = self.nameTextField.text!
         let buyerEmail = self.emailTextField.text
@@ -176,18 +177,18 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         let amount = self.amountTextField.text
         let description = self.descriptionTextField.text
         let webHook = "http://your.server.com/webhook/"
-
+        
         let order: Order =  Order.init(authToken : accessToken, transactionID : transactionID, buyerName : buyerName, buyerEmail : buyerEmail!, buyerPhone : buyerPhone!, amount : amount!, description : description!, webhook : webHook)
-
+        
         return order
     }
-
+    
     func showAlert(errorMessage: String) {
         let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     //To asssing next responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField == self.nameTextField) {
@@ -201,6 +202,10 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             self.amountTextField.becomeFirstResponder()
             scrollView.setContentOffset(CGPoint.init(x: 0, y: keyboardHeight), animated: true)
         } else if (textField == self.amountTextField) {
+            let amount = self.amountTextField.text
+            if !(amount?.isEmpty)! && !(amount?.contains("."))!{
+                self.amountTextField.text = self.amountTextField.text! + ".00"
+            }
             self.textField = self.descriptionTextField
             self.descriptionTextField.becomeFirstResponder()
             scrollView.setContentOffset(CGPoint.init(x: 0, y: keyboardHeight), animated: true)
@@ -210,7 +215,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         }
         return false
     }
-
+    
     func onFinish(order: Order, error: String) {
         if !error.isEmpty {
             DispatchQueue.main.async {
@@ -224,9 +229,9 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             }
         }
     }
-
+    
     func checkPaymentStatus() {
-        self.spinner.show()
+        spinner.show()
         if accessToken == nil {
             return
         }
@@ -242,7 +247,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         request.httpMethod = "GET"
         let session = URLSession.shared
         request.addValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
-
+        
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             Logger.logDebug(tag: "Payment Status", message: String(describing: response))
             DispatchQueue.main.async {
@@ -274,9 +279,9 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         })
         task.resume()
     }
-
+    
     func refundTheAmount(amount: String, transctionID: String) {
-        self.spinner.show()
+        spinner.show()
         let url: String = "https://sample-sdk-server.instamojo.com/refund/"
         let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "POST"
@@ -286,7 +291,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         request.setBodyContent(parameters: params)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
-
+        
         let task = session.dataTask(with: request as URLRequest, completionHandler: {_, _, error -> Void in
             DispatchQueue.main.async {
                 self.spinner.hide()
