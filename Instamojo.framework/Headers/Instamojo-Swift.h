@@ -299,6 +299,7 @@ SWIFT_CLASS("_TtC9Instamojo7Spinner")
 @property (nonatomic, readonly, strong) UIBlurEffect * _Nonnull blurEffect;
 @property (nonatomic, readonly, strong) UIVisualEffectView * _Nonnull vibrancyView;
 - (nonnull instancetype)initWithText:(NSString * _Nonnull)text OBJC_DESIGNATED_INITIALIZER;
+- (void)setTextWithText:(NSString * _Nonnull)text;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)setup;
 - (void)didMoveToSuperview;
@@ -324,7 +325,7 @@ SWIFT_CLASS("_TtC9Instamojo14UPIPaymentView")
 - (void)checkForStatusTransaction;
 - (void)onStatusCheckCompleteWithPaymentComplete:(BOOL)paymentComplete exception:(NSString * _Nonnull)exception;
 - (void)onPaymentStatusComplete;
-- (void)showAlertWithErrorMessage:(NSString * _Nonnull)errorMessage;
+- (void)showAlertWithTitle:(NSString * _Nonnull)title errorMessage:(NSString * _Nonnull)errorMessage;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
