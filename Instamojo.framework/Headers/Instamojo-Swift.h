@@ -124,11 +124,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 @class MonthYearPickerView;
+@class UILabel;
+@class UIView;
 @class Spinner;
 @class UITextField;
 @class UIBarButtonItem;
 @class BrowserParams;
-@class UILabel;
 @class UIButton;
 @class UIImageView;
 @class NSBundle;
@@ -136,7 +137,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC9Instamojo12CardFormView")
 @interface CardFormView : UIViewController <UITextFieldDelegate>
-@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified errorLableView;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified payButton;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified cvvTextField;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified expiryDateTextField;
@@ -144,10 +144,19 @@ SWIFT_CLASS("_TtC9Instamojo12CardFormView")
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified cardNumberTextField;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified cardImageView;
 @property (nonatomic, strong) IBOutlet MonthYearPickerView * _Null_unspecified expiryPickerView;
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified cardNumberErrorLable;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified cardNumberDivider;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified nameDivider;
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified nameErrorLable;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified expiryDateDivider;
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified expiryDateErrorLable;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified cvvDivider;
+@property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified cvvErrorLable;
 @property (nonatomic) NSInteger cardType;
 @property (nonatomic) float amountToBePayed;
 @property (nonatomic, strong) Spinner * _Null_unspecified spinner;
 @property (nonatomic, strong) UITextField * _Null_unspecified textField;
+@property (nonatomic) BOOL invalidEntries;
 - (void)viewDidLoad;
 - (void)doneButton_ClickedWithSender:(UIBarButtonItem * _Nonnull)sender;
 - (void)prepareCheckOut;
@@ -285,7 +294,6 @@ SWIFT_CLASS("_TtC9Instamojo21PaymentViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIView;
 @class UIActivityIndicatorView;
 @class UIBlurEffect;
 @class UIVisualEffect;
