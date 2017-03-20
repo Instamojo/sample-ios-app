@@ -27,6 +27,16 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     var keyboardHeight: Int!
     var textField : UITextField!
     
+    @IBOutlet var nameDivider: UIView!
+    @IBOutlet var nameErrorLable: UILabel!
+    @IBOutlet var emailDivider: UIView!
+    @IBOutlet var emailErrorLable: UILabel!
+    @IBOutlet var phoneNumberDivider: UIView!
+    @IBOutlet var phoneNumberErrorLable: UILabel!
+    @IBOutlet var amountDivider: UIView!
+    @IBOutlet var amountErrorLable: UILabel!
+    @IBOutlet var descriptionDivider: UIView!
+    @IBOutlet var descriptionErrorLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultData()
@@ -116,6 +126,9 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, _, error -> Void in
+            DispatchQueue.main.async {
+                self.spinner.hide()
+            }
             if error == nil {
                 do {
                     if let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: []) as?  [String:Any] {
@@ -153,15 +166,23 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         self.transactionID = transactionID
         self.accessToken = accessToken
         let order = self.formAnOrder(transactionID: transactionID, accessToken: accessToken)
+        DispatchQueue.main.async {
+            self.payButton.isEnabled = true
+            self.invalidName(show: !order.isValidName().validity, error: order.isValidName().error)
+            self.invalidEmail(show: !order.isValidEmail().validity, error: order.isValidEmail().error)
+            self.invalidAmount(show: !order.isValidAmount().validity, error: order.isValidAmount().error)
+            self.invalidPhoneNumber(show: !order.isValidPhone().validity, error: order.isValidPhone().error)
+            self.invalidDescription(show: !order.isValidDescription().validity, error: order.isValidDescription().error)
+            if !order.isValidWebhook().validity && !order.isValidTransactionID().validity {
+                self.showAlert(errorMessage: order.isValidWebhook().error + order.isValidTransactionID().error)
+            }
+        }
         if order.isValidToCreateOrder().validity {
+            DispatchQueue.main.async {
+                self.spinner.show()
+            }
             let request = Request.init(order: order, orderRequestCallBack: self)
             request.execute()
-        } else {
-            DispatchQueue.main.async {
-                self.spinner.hide()
-                self.payButton.isEnabled = true
-            }
-            self.showAlert(errorMessage: order.isValidToCreateOrder().error)
         }
     }
     
@@ -262,12 +283,12 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
                         let status = jsonResponse["status"] as? String
                         if status == "completed"{
                             let id = payments?[0]["id"] as? String
-                            self.showAlert(errorMessage: "Transaction Successful for id - " + id!)
+                            self.showAlert(errorMessage: "Transaction Successful for id - " + id! + ". Refund will be initated")
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 self.refundTheAmount(amount: amount!, transctionID: self.transactionID)
                             }
                         } else {
-                            self.showAlert(errorMessage: "Transaction still pending")
+                            self.showAlert(errorMessage: "Transaction pending")
                         }
                     }
                 } catch {
@@ -281,7 +302,6 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     }
     
     func refundTheAmount(amount: String, transctionID: String) {
-        spinner.show()
         let url: String = "https://sample-sdk-server.instamojo.com/refund/"
         let request = NSMutableURLRequest(url: NSURL(string: url)! as URL)
         request.httpMethod = "POST"
@@ -293,9 +313,6 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         request.addValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: {_, _, error -> Void in
-            DispatchQueue.main.async {
-                self.spinner.hide()
-            }
             if error == nil {
                 self.showAlert(errorMessage: "Refund intiated successfully")
             } else {
@@ -303,6 +320,61 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             }
         })
         task.resume()
+    }
+    
+    func invalidName(show: Bool, error: String){
+        if show {
+            nameErrorLable.isHidden = false
+            nameErrorLable.text = error
+            nameDivider.backgroundColor = UIColor .red
+        }else{
+            nameErrorLable.isHidden = true
+            nameDivider.backgroundColor = UIColor .groupTableViewBackground
+        }
+    }
+    
+    func invalidEmail(show: Bool, error: String){
+        if show {
+            emailErrorLable.isHidden = false
+            emailErrorLable.text = error
+            emailDivider.backgroundColor = .red
+        }else{
+            emailErrorLable.isHidden = true
+            emailDivider.backgroundColor = .groupTableViewBackground
+        }
+    }
+    
+    func invalidPhoneNumber(show: Bool, error: String){
+        if show {
+            phoneNumberErrorLable.isHidden = false
+            phoneNumberErrorLable.text = error
+            phoneNumberDivider.backgroundColor = .red
+        }else{
+            phoneNumberErrorLable.isHidden = true
+            phoneNumberDivider.backgroundColor = .groupTableViewBackground
+        }
+    }
+    
+    func invalidAmount(show: Bool, error: String){
+        if show {
+            amountErrorLable.isHidden = false
+            amountErrorLable.text = error
+            amountDivider.backgroundColor = .red
+        }else{
+            amountErrorLable.isHidden = true
+            amountDivider.backgroundColor = .groupTableViewBackground
+        }
+    }
+    
+    func invalidDescription(show: Bool, error: String){
+        if show {
+            descriptionErrorLable.isHidden = false
+            descriptionErrorLable.text = error
+            descriptionDivider.backgroundColor = .red
+        }else{
+            descriptionErrorLable.isHidden = true
+            descriptionDivider.backgroundColor = .groupTableViewBackground
+        }
     }
 }
 
