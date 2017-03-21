@@ -115,17 +115,32 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_UNAVAILABLE __attribute__((unavailable))
 #endif
 #if defined(__has_feature) && __has_feature(modules)
+@import ObjectiveC;
 @import UIKit;
 @import Foundation;
-@import ObjectiveC;
 @import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+
+SWIFT_CLASS("_TtC9Instamojo4Card")
+@interface Card : NSObject
+@property (nonatomic, copy) NSString * _Nonnull cardHolderName;
+@property (nonatomic, copy) NSString * _Nonnull cardNumber;
+@property (nonatomic, copy) NSString * _Nonnull date;
+@property (nonatomic, copy) NSString * _Nonnull cvv;
+@property (nonatomic) BOOL savedCard;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCardHolderName:(NSString * _Nonnull)cardHolderName cardNumber:(NSString * _Nonnull)cardNumber date:(NSString * _Nonnull)date cvv:(NSString * _Nonnull)cvv savedCard:(BOOL)savedCard OBJC_DESIGNATED_INITIALIZER;
+- (NSString * _Nonnull)getExpiryMonth;
+- (NSString * _Nonnull)getExpiryYear;
+@end
+
 @class MonthYearPickerView;
 @class UILabel;
 @class UIView;
+@class Order;
 @class Spinner;
 @class UITextField;
 @class UIBarButtonItem;
@@ -152,6 +167,7 @@ SWIFT_CLASS("_TtC9Instamojo12CardFormView")
 @property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified expiryDateErrorLable;
 @property (nonatomic, strong) IBOutlet UIView * _Null_unspecified cvvDivider;
 @property (nonatomic, strong) IBOutlet UILabel * _Null_unspecified cvvErrorLable;
+@property (nonatomic, strong) Order * _Null_unspecified order;
 @property (nonatomic) NSInteger cardType;
 @property (nonatomic) float amountToBePayed;
 @property (nonatomic, strong) Spinner * _Null_unspecified spinner;
@@ -160,6 +176,7 @@ SWIFT_CLASS("_TtC9Instamojo12CardFormView")
 - (void)viewDidLoad;
 - (void)doneButton_ClickedWithSender:(UIBarButtonItem * _Nonnull)sender;
 - (void)prepareCheckOut;
+- (void)checkOutCardWithCard:(Card * _Nonnull)card;
 - (void)validateEntries;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField;
 - (void)initUI SWIFT_METHOD_FAMILY(none);
@@ -171,6 +188,38 @@ SWIFT_CLASS("_TtC9Instamojo12CardFormView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9Instamojo11CardOptions")
+@interface CardOptions : NSObject
+@property (nonatomic, copy) NSString * _Nonnull orderID;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, copy) NSString * _Nonnull merchantID;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithOrderID:(NSString * _Nonnull)orderID url:(NSString * _Nonnull)url merchantID:(NSString * _Nonnull)merchantID OBJC_DESIGNATED_INITIALIZER;
+- (NSString * _Nonnull)toString;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo7EMIBank")
+@interface EMIBank : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified bankName;
+@property (nonatomic, copy) NSString * _Null_unspecified bankCode;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo10EMIOptions")
+@interface EMIOptions : NSObject
+@property (nonatomic, copy) NSString * _Nonnull merchantID;
+@property (nonatomic, copy) NSString * _Nonnull orderID;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, copy) NSArray<EMIBank *> * _Null_unspecified emiBanks;
+@property (nonatomic, copy) NSString * _Null_unspecified selectedBankCode;
+@property (nonatomic) NSInteger selectedTenure;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithMerchantID:(NSString * _Nonnull)merchantID orderID:(NSString * _Nonnull)orderID url:(NSString * _Nonnull)url emiBanks:(NSArray<EMIBank *> * _Nonnull)emiBanks OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSDictionary;
 @class UITableView;
 @class UITableViewCell;
@@ -179,6 +228,8 @@ SWIFT_CLASS("_TtC9Instamojo14EMIOptionsView")
 @interface EMIOptionsView : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified emiOptionsTableView;
 @property (nonatomic, strong) NSDictionary * _Nonnull values;
+@property (nonatomic, strong) Order * _Null_unspecified order;
+@property (nonatomic, strong) EMIBank * _Null_unspecified selectedBank;
 - (void)viewDidLoad;
 - (void)loadOptions;
 - (double)getEMIAmountWithTotalAmount:(NSString * _Nonnull)totalAmount interest:(NSInteger)interest tenure:(NSInteger)tenure;
@@ -207,18 +258,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
   @param baseUrl URl
 */
 + (void)setBaseUrlWithUrl:(NSString * _Nonnull)url;
++ (void)invokePaymentOptionsViewWithOrder:(Order * _Nonnull)order;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UIStoryboard;
+@class NetBankingBanks;
+@class Wallet;
 @class UISearchController;
 
 SWIFT_CLASS("_TtC9Instamojo15ListOptionsView")
 @interface ListOptionsView : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified banksTableView;
 @property (nonatomic, copy) NSString * _Null_unspecified paymentOption;
+@property (nonatomic, strong) Order * _Null_unspecified order;
 @property (nonatomic, strong) UIStoryboard * _Nonnull mainStoryboard;
 @property (nonatomic, copy) NSString * _Null_unspecified submissionURL;
+@property (nonatomic, copy) NSArray<NetBankingBanks *> * _Null_unspecified netBanks;
+@property (nonatomic, copy) NSArray<Wallet *> * _Null_unspecified wallets;
+@property (nonatomic, copy) NSArray<EMIBank *> * _Null_unspecified banks;
+@property (nonatomic, copy) NSArray<EMIBank *> * _Nonnull filteredEMIBanks;
+@property (nonatomic, copy) NSArray<Wallet *> * _Nonnull filteredWallets;
+@property (nonatomic, copy) NSArray<NetBankingBanks *> * _Nonnull filteredNetBanks;
 @property (nonatomic, strong) UISearchController * _Nonnull resultSearchController;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
@@ -255,11 +316,67 @@ SWIFT_CLASS("_TtC9Instamojo19MonthYearPickerView")
 - (void)setBodyContentWithParameters:(NSDictionary<NSString *, id> * _Nonnull)parameters;
 @end
 
+
+SWIFT_CLASS("_TtC9Instamojo15NetBankingBanks")
+@interface NetBankingBanks : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified bankName;
+@property (nonatomic, copy) NSString * _Null_unspecified bankCode;
+- (nonnull instancetype)initWithBankName:(NSString * _Nonnull)bankName bankCode:(NSString * _Nonnull)bankCode OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo17NetBankingOptions")
+@interface NetBankingOptions : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified url;
+@property (nonatomic, copy) NSArray<NetBankingBanks *> * _Null_unspecified banks;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url banks:(NSArray<NetBankingBanks *> * _Nonnull)banks OBJC_DESIGNATED_INITIALIZER;
+- (NSString * _Nonnull)getPostDataWithAccessToken:(NSString * _Nonnull)accessToken bankCode:(NSString * _Nonnull)bankCode;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+@class WalletOptions;
+@class UPIOptions;
+
+SWIFT_CLASS("_TtC9Instamojo5Order")
+@interface Order : NSObject
+@property (nonatomic, copy) NSString * _Nullable id;
+@property (nonatomic, copy) NSString * _Nullable transactionID;
+@property (nonatomic, readonly, copy) NSString * _Nullable buyerName;
+@property (nonatomic, copy) NSString * _Nullable buyerEmail;
+@property (nonatomic, copy) NSString * _Nullable buyerPhone;
+@property (nonatomic, copy) NSString * _Nullable amount;
+@property (nonatomic, copy) NSString * _Nullable orderDescription;
+@property (nonatomic, copy) NSString * _Nullable currency;
+@property (nonatomic, copy) NSString * _Nullable redirectionUrl;
+@property (nonatomic, copy) NSString * _Nullable webhook;
+@property (nonatomic, copy) NSString * _Nullable mode;
+@property (nonatomic, copy) NSString * _Nullable authToken;
+@property (nonatomic, copy) NSString * _Nullable resourceURI;
+@property (nonatomic, copy) NSString * _Nullable clientID;
+@property (nonatomic, strong) CardOptions * _Null_unspecified cardOptions;
+@property (nonatomic, strong) NetBankingOptions * _Null_unspecified netBankingOptions;
+@property (nonatomic, strong) EMIOptions * _Null_unspecified emiOptions;
+@property (nonatomic, strong) WalletOptions * _Null_unspecified walletOptions;
+@property (nonatomic, strong) UPIOptions * _Null_unspecified upiOptions;
+- (nonnull instancetype)initWithAuthToken:(NSString * _Nonnull)authToken transactionID:(NSString * _Nonnull)transactionID buyerName:(NSString * _Nonnull)buyerName buyerEmail:(NSString * _Nonnull)buyerEmail buyerPhone:(NSString * _Nonnull)buyerPhone amount:(NSString * _Nonnull)amount description:(NSString * _Nonnull)description webhook:(NSString * _Nonnull)webhook OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)validateEmailWithEmail:(NSString * _Nonnull)email;
+- (BOOL)isValidURLWithUrlString:(NSString * _Nonnull)urlString;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_PROTOCOL("_TtP9Instamojo20OrderRequestCallBack_")
+@protocol OrderRequestCallBack
+- (void)onFinishWithOrder:(Order * _Nonnull)order error:(NSString * _Nonnull)error;
+@end
+
 @class NSMutableArray;
 
 SWIFT_CLASS("_TtC9Instamojo18PaymentOptionsView")
 @interface PaymentOptionsView : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified paymentOptionsTableView;
+@property (nonatomic, strong) Order * _Null_unspecified order;
 @property (nonatomic, strong) NSMutableArray * _Nonnull paymentOptions;
 @property (nonatomic, strong) UIStoryboard * _Nonnull mainStoryboard;
 - (void)viewDidLoad;
@@ -316,12 +433,30 @@ SWIFT_CLASS("_TtC9Instamojo7Spinner")
 - (nonnull instancetype)initWithEffect:(UIVisualEffect * _Nullable)effect SWIFT_UNAVAILABLE;
 @end
 
+@class UPISubmissionResponse;
+
+SWIFT_PROTOCOL("_TtP9Instamojo11UPICallBack_")
+@protocol UPICallBack
+- (void)onSubmissionWithUpiSubmissionResponse:(UPISubmissionResponse * _Nonnull)upiSubmissionResponse exception:(NSString * _Nonnull)exception;
+- (void)onStatusCheckCompleteWithPaymentComplete:(BOOL)paymentComplete status:(NSInteger)status;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo10UPIOptions")
+@interface UPIOptions : NSObject
+@property (nonatomic, copy) NSString * _Nonnull url;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC9Instamojo14UPIPaymentView")
-@interface UPIPaymentView : UIViewController <UITextFieldDelegate>
+@interface UPIPaymentView : UIViewController <UPICallBack, UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified alertMessageView;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified vpaDetailsView;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified vpa;
+@property (nonatomic, strong) Order * _Null_unspecified order;
+@property (nonatomic, strong) UPISubmissionResponse * _Null_unspecified upiSubmissionResponse;
 @property (nonatomic, strong) Spinner * _Null_unspecified spinner;
 @property (nonatomic) BOOL continueCheck;
 - (void)viewDidLoad;
@@ -330,12 +465,47 @@ SWIFT_CLASS("_TtC9Instamojo14UPIPaymentView")
 - (void)viewDidDisappear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)verifyPaymentWithSender:(UIBarButtonItem * _Nonnull)sender;
+- (void)onSubmissionWithUpiSubmissionResponse:(UPISubmissionResponse * _Nonnull)upiSubmissionResponse exception:(NSString * _Nonnull)exception;
 - (void)checkForStatusTransaction;
-- (void)onStatusCheckCompleteWithPaymentComplete:(BOOL)paymentComplete exception:(NSString * _Nonnull)exception;
-- (void)onPaymentStatusComplete;
+- (void)onStatusCheckCompleteWithPaymentComplete:(BOOL)paymentComplete status:(NSInteger)status;
+- (void)onPaymentStatusCompleteWithMessage:(NSString * _Nonnull)message;
 - (void)showAlertWithTitle:(NSString * _Nonnull)title errorMessage:(NSString * _Nonnull)errorMessage;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo21UPISubmissionResponse")
+@interface UPISubmissionResponse : NSObject
+@property (nonatomic, copy) NSString * _Nonnull paymentID;
+@property (nonatomic) NSInteger statusCode;
+@property (nonatomic, copy) NSString * _Nonnull payerVirtualAddress;
+@property (nonatomic, copy) NSString * _Nonnull payeeVirtualAddress;
+@property (nonatomic, copy) NSString * _Nonnull statusCheckURL;
+@property (nonatomic, copy) NSString * _Nonnull upiBank;
+@property (nonatomic, copy) NSString * _Nonnull statusMessage;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithPaymentID:(NSString * _Nonnull)paymentID statusCode:(NSInteger)statusCode payerVirtualAddress:(NSString * _Nonnull)payerVirtualAddress payeeVirtualAddress:(NSString * _Nonnull)payeeVirtualAddress statusCheckURL:(NSString * _Nonnull)statusCheckURL upiBank:(NSString * _Nonnull)upiBank statusMessage:(NSString * _Nonnull)statusMessage OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo6Wallet")
+@interface Wallet : NSObject
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSString * _Nonnull imageUrl;
+@property (nonatomic, copy) NSString * _Nonnull walletID;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name imageUrl:(NSString * _Nonnull)imageUrl walletID:(NSString * _Nonnull)walletID OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9Instamojo13WalletOptions")
+@interface WalletOptions : NSObject
+@property (nonatomic, copy) NSString * _Null_unspecified url;
+@property (nonatomic, copy) NSArray<Wallet *> * _Null_unspecified wallets;
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url wallets:(NSArray<Wallet *> * _Nonnull)wallets OBJC_DESIGNATED_INITIALIZER;
+- (NSString * _Nonnull)getPostDataWithAccessToken:(NSString * _Nonnull)accessToken walletID:(NSString * _Nonnull)walletID;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 #pragma clang diagnostic pop
