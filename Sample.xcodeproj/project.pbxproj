@@ -347,6 +347,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -367,6 +368,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
