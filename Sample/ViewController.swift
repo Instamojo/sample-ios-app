@@ -37,15 +37,18 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     @IBOutlet var amountErrorLable: UILabel!
     @IBOutlet var descriptionDivider: UIView!
     @IBOutlet var descriptionErrorLable: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        defaultData()
-        let notificationName = Notification.Name("JUSPAY")
+        setDefaultData()
+        addNotificationToRecievePaymentCompletion()
+        
+       //Add Loader/Spinner To the current view
         spinner = Spinner(text : "Please Wait..")
         spinner.hide()
         self.view.addSubview(spinner)
-        // Register to receive notification
-        NotificationCenter.default.addObserver(self, selector: #selector(self.juspayCallBack), name: notificationName, object: nil)
+        
+        //Set data mutable array to choose from prod and test environment
         environment = ["Production Environment": "production", "Test Environment": "test"]
         
         //Delegate texfield to handle next button click on keyboard
@@ -54,17 +57,27 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         self.nameTextField.delegate = self
         self.descriptionTextField.delegate = self
         self.phoneNumberTextfield.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        //set nameTextField as inital Textfield to handle resigning the responder
         self.textField = self.nameTextField
+
+        //Set observer to handle keybaord navigations
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            keyboardHeight = Int(keyboardSize.height) - 100
-        }
+    func setDefaultData() {
+        nameTextField.text = "Sukanya"
+        emailTextField.text = "sukanya@innoventestech.com"
+        phoneNumberTextfield.text = "9952620490"
+        amountTextField.text = "10.00"
+        descriptionTextField.text = "Test Description"
     }
     
-    func juspayCallBack() {
+    func addNotificationToRecievePaymentCompletion(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.paymentCompletionCallBack), name: NSNotification.Name("JUSPAY"), object: nil)
+    }
+    
+    func paymentCompletionCallBack() {
         if UserDefaults.standard.value(forKey: "USER-CANCELLED") != nil {
             self.showAlert(errorMessage: "Transaction cancelled by user, back button was pressed.")
         }
@@ -83,6 +96,12 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         }
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = Int(keyboardSize.height) - 100
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -97,14 +116,6 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
             Instamojo.setBaseUrl(url: "https://test.instamojo.com/")
             Logger.logDebug(tag: "Environment", message: environment[selectedEnv.text!]!)
         }
-    }
-    
-    func defaultData() {
-        nameTextField.text = "Sukanya"
-        emailTextField.text = "sukanya@innoventestech.com"
-        phoneNumberTextfield.text = "9952620490"
-        amountTextField.text = "10.00"
-        descriptionTextField.text = "Test Description"
     }
     
     @IBAction func showPaymentView(_ sender: Any) {
