@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586740931E82785000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740921E82785000E8148E /* Main.storyboard */; };
 		58B158A21E7AB9C200AAB87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A11E7AB9C200AAB87A /* AppDelegate.swift */; };
 		58B158A41E7AB9C700AAB87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A31E7AB9C700AAB87A /* ViewController.swift */; };
 		58B158AF1E7AB9EA00AAB87A /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */; };
@@ -18,7 +19,6 @@
 		58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */; };
 		58B158D41E7AC4D900AAB87A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D21E7AC4D900AAB87A /* Crashlytics.framework */; };
 		58B158D51E7AC4D900AAB87A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D31E7AC4D900AAB87A /* Fabric.framework */; };
-		58B158DA1E7AC70800AAB87A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B158A61E7AB9D900AAB87A /* Main.storyboard */; };
 		58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B158A81E7AB9DD00AAB87A /* Assets.xcassets */; };
 		58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -37,10 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		586740921E82785000E8148E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		58B158881E7AB96300AAB87A /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B158A11E7AB9C200AAB87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58B158A31E7AB9C700AAB87A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		58B158A51E7AB9D900AAB87A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58B158A81E7AB9DD00AAB87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58B158AC1E7AB9E400AAB87A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				58B158A11E7AB9C200AAB87A /* AppDelegate.swift */,
 				58B158A31E7AB9C700AAB87A /* ViewController.swift */,
 				58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */,
-				58B158A61E7AB9D900AAB87A /* Main.storyboard */,
+				586740921E82785000E8148E /* Main.storyboard */,
 				58B158A81E7AB9DD00AAB87A /* Assets.xcassets */,
 				58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */,
 				58B158AC1E7AB9E400AAB87A /* Info.plist */,
@@ -179,10 +179,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B158DA1E7AC70800AAB87A /* Main.storyboard in Resources */,
 				58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */,
 				58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */,
 				58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */,
+				586740931E82785000E8148E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,18 +229,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		58B158A61E7AB9D900AAB87A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58B158A51E7AB9D900AAB87A /* Base */,
-			);
-			name = Main.storyboard;
-			path = ../../instamojo/Sample;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		58B158981E7AB96300AAB87A /* Debug */ = {
