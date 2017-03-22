@@ -7,128 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		586740931E82785000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740921E82785000E8148E /* Main.storyboard */; };
-		58B158A21E7AB9C200AAB87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A11E7AB9C200AAB87A /* AppDelegate.swift */; };
-		58B158A41E7AB9C700AAB87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A31E7AB9C700AAB87A /* ViewController.swift */; };
-		58B158AF1E7AB9EA00AAB87A /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */; };
-		58B158B91E7ABB0600AAB87A /* Instamojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B71E7ABAFF00AAB87A /* Instamojo.framework */; };
-		58B158BC1E7ABB0A00AAB87A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */; };
-		58B158BE1E7ABB1000AAB87A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */; };
-		58B158C01E7ABB1400AAB87A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */; };
-		58B158C31E7ABC6600AAB87A /* Instamojo.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B158B71E7ABAFF00AAB87A /* Instamojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */; };
-		58B158D41E7AC4D900AAB87A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D21E7AC4D900AAB87A /* Crashlytics.framework */; };
-		58B158D51E7AC4D900AAB87A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D31E7AC4D900AAB87A /* Fabric.framework */; };
-		58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B158A81E7AB9DD00AAB87A /* Assets.xcassets */; };
-		58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */; };
+		582100211E82745600C7A93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582100201E82745600C7A93C /* Assets.xcassets */; };
+		582100231E82746200C7A93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582100221E82746200C7A93C /* LaunchScreen.storyboard */; };
+		5842FFA91E80F162003C1FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFA81E80F162003C1FF5 /* main.m */; };
+		5842FFAC1E80F162003C1FF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFAB1E80F162003C1FF5 /* AppDelegate.m */; };
+		5842FFAF1E80F162003C1FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFAE1E80F162003C1FF5 /* ViewController.m */; };
+		5842FFC01E80F17F003C1FF5 /* Instamojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; };
+		5842FFC11E80F17F003C1FF5 /* Instamojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5842FFC21E80F17F003C1FF5 /* JuspaySafeBrowser.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		586740951E827BE000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740941E827BE000E8148E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		58B158C21E7ABC6000AAB87A /* CopyFiles */ = {
+		5842FFC31E80F17F003C1FF5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58B158C31E7ABC6600AAB87A /* Instamojo.framework in CopyFiles */,
+				5842FFC11E80F17F003C1FF5 /* Instamojo.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5842FFC41E80F17F003C1FF5 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5842FFC21E80F17F003C1FF5 /* JuspaySafeBrowser.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		586740921E82785000E8148E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		58B158881E7AB96300AAB87A /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		58B158A11E7AB9C200AAB87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		58B158A31E7AB9C700AAB87A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		58B158A81E7AB9DD00AAB87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		58B158AC1E7AB9E400AAB87A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentOptions.swift; sourceTree = "<group>"; };
-		58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		58B158B71E7ABAFF00AAB87A /* Instamojo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instamojo.framework; sourceTree = "<group>"; };
-		58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JuspaySafeBrowser.bundle; sourceTree = "<group>"; };
-		58B158D21E7AC4D900AAB87A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		58B158D31E7AC4D900AAB87A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		582100201E82745600C7A93C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		582100221E82746200C7A93C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5842FFA41E80F162003C1FF5 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5842FFA81E80F162003C1FF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5842FFAA1E80F162003C1FF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5842FFAB1E80F162003C1FF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5842FFAD1E80F162003C1FF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5842FFAE1E80F162003C1FF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5842FFB81E80F162003C1FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instamojo.framework; sourceTree = "<group>"; };
+		5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JuspaySafeBrowser.bundle; sourceTree = "<group>"; };
+		586740941E827BE000E8148E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		58B158851E7AB96300AAB87A /* Frameworks */ = {
+		5842FFA11E80F162003C1FF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B158D41E7AC4D900AAB87A /* Crashlytics.framework in Frameworks */,
-				58B158D51E7AC4D900AAB87A /* Fabric.framework in Frameworks */,
-				58B158B91E7ABB0600AAB87A /* Instamojo.framework in Frameworks */,
-				58B158BE1E7ABB1000AAB87A /* SystemConfiguration.framework in Frameworks */,
-				58B158BC1E7ABB0A00AAB87A /* JavaScriptCore.framework in Frameworks */,
-				58B158C01E7ABB1400AAB87A /* CoreTelephony.framework in Frameworks */,
+				5842FFC01E80F17F003C1FF5 /* Instamojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		58B1587F1E7AB96300AAB87A = {
+		5842FF9B1E80F162003C1FF5 = {
 			isa = PBXGroup;
 			children = (
-				58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */,
-				58B1588A1E7AB96300AAB87A /* Sample */,
-				58B158891E7AB96300AAB87A /* Products */,
-				58B158B01E7ABAD000AAB87A /* Frameworks */,
+				5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */,
+				5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */,
+				5842FFA61E80F162003C1FF5 /* Sample */,
+				5842FFA51E80F162003C1FF5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		58B158891E7AB96300AAB87A /* Products */ = {
+		5842FFA51E80F162003C1FF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58B158881E7AB96300AAB87A /* Sample.app */,
+				5842FFA41E80F162003C1FF5 /* Sample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		58B1588A1E7AB96300AAB87A /* Sample */ = {
+		5842FFA61E80F162003C1FF5 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				58B158A11E7AB9C200AAB87A /* AppDelegate.swift */,
-				58B158A31E7AB9C700AAB87A /* ViewController.swift */,
-				58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */,
-				586740921E82785000E8148E /* Main.storyboard */,
-				58B158A81E7AB9DD00AAB87A /* Assets.xcassets */,
-				58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */,
-				58B158AC1E7AB9E400AAB87A /* Info.plist */,
+				5842FFAA1E80F162003C1FF5 /* AppDelegate.h */,
+				5842FFAB1E80F162003C1FF5 /* AppDelegate.m */,
+				5842FFAD1E80F162003C1FF5 /* ViewController.h */,
+				5842FFAE1E80F162003C1FF5 /* ViewController.m */,
+				586740941E827BE000E8148E /* Main.storyboard */,
+				582100221E82746200C7A93C /* LaunchScreen.storyboard */,
+				582100201E82745600C7A93C /* Assets.xcassets */,
+				5842FFB81E80F162003C1FF5 /* Info.plist */,
+				5842FFA71E80F162003C1FF5 /* Supporting Files */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
 		};
-		58B158B01E7ABAD000AAB87A /* Frameworks */ = {
+		5842FFA71E80F162003C1FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				58B158D21E7AC4D900AAB87A /* Crashlytics.framework */,
-				58B158D31E7AC4D900AAB87A /* Fabric.framework */,
-				58B158B71E7ABAFF00AAB87A /* Instamojo.framework */,
-				58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */,
-				58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */,
-				58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */,
+				5842FFA81E80F162003C1FF5 /* main.m */,
 			);
-			name = Frameworks;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B158871E7AB96300AAB87A /* Sample */ = {
+		5842FFA31E80F162003C1FF5 /* Sample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B1589A1E7AB96300AAB87A /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildConfigurationList = 5842FFBB1E80F162003C1FF5 /* Build configuration list for PBXNativeTarget "Sample" */;
 			buildPhases = (
-				58B158841E7AB96300AAB87A /* Sources */,
-				58B158851E7AB96300AAB87A /* Frameworks */,
-				58B158861E7AB96300AAB87A /* Resources */,
-				58B158C21E7ABC6000AAB87A /* CopyFiles */,
-				58B158D91E7AC52100AAB87A /* ShellScript */,
-				5842FFCA1E80FBC2003C1FF5 /* ShellScript */,
+				5842FFA01E80F162003C1FF5 /* Sources */,
+				5842FFA11E80F162003C1FF5 /* Frameworks */,
+				5842FFA21E80F162003C1FF5 /* Resources */,
+				5842FFC31E80F17F003C1FF5 /* Embed Frameworks */,
+				5842FFC41E80F17F003C1FF5 /* Embed PlugIns */,
+				5842FFC71E80F93A003C1FF5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -136,27 +132,26 @@
 			);
 			name = Sample;
 			productName = Sample;
-			productReference = 58B158881E7AB96300AAB87A /* Sample.app */;
+			productReference = 5842FFA41E80F162003C1FF5 /* Sample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		58B158801E7AB96300AAB87A /* Project object */ = {
+		5842FF9C1E80F162003C1FF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Sukanya Raj";
 				TargetAttributes = {
-					58B158871E7AB96300AAB87A = {
+					5842FFA31E80F162003C1FF5 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = YB8APMPG5N;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 58B158831E7AB96300AAB87A /* Build configuration list for PBXProject "Sample" */;
+			buildConfigurationList = 5842FF9F1E80F162003C1FF5 /* Build configuration list for PBXProject "Sample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -164,32 +159,31 @@
 				en,
 				Base,
 			);
-			mainGroup = 58B1587F1E7AB96300AAB87A;
-			productRefGroup = 58B158891E7AB96300AAB87A /* Products */;
+			mainGroup = 5842FF9B1E80F162003C1FF5;
+			productRefGroup = 5842FFA51E80F162003C1FF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B158871E7AB96300AAB87A /* Sample */,
+				5842FFA31E80F162003C1FF5 /* Sample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		58B158861E7AB96300AAB87A /* Resources */ = {
+		5842FFA21E80F162003C1FF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */,
-				58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */,
-				58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */,
-				586740931E82785000E8148E /* Main.storyboard in Resources */,
+				586740951E827BE000E8148E /* Main.storyboard in Resources */,
+				582100231E82746200C7A93C /* LaunchScreen.storyboard in Resources */,
+				582100211E82745600C7A93C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5842FFCA1E80FBC2003C1FF5 /* ShellScript */ = {
+		5842FFC71E80F93A003C1FF5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -202,36 +196,23 @@
 			shellPath = /bin/sh;
 			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
 		};
-		58B158D91E7AC52100AAB87A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 07ad6ec4919f509fb3b675750673a5c630614723 d90b71c648f26bc9c8855e9e3e4c36ca28928285735ebf774e77028d9169068e";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		58B158841E7AB96300AAB87A /* Sources */ = {
+		5842FFA01E80F162003C1FF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B158A41E7AB9C700AAB87A /* ViewController.swift in Sources */,
-				58B158AF1E7AB9EA00AAB87A /* PaymentOptions.swift in Sources */,
-				58B158A21E7AB9C200AAB87A /* AppDelegate.swift in Sources */,
+				5842FFAF1E80F162003C1FF5 /* ViewController.m in Sources */,
+				5842FFAC1E80F162003C1FF5 /* AppDelegate.m in Sources */,
+				5842FFA91E80F162003C1FF5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		58B158981E7AB96300AAB87A /* Debug */ = {
+		5842FFB91E80F162003C1FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -275,13 +256,11 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		58B158991E7AB96300AAB87A /* Release */ = {
+		5842FFBA1E80F162003C1FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -318,17 +297,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		58B1589B1E7AB96300AAB87A /* Debug */ = {
+		5842FFBC1E80F162003C1FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YB8APMPG5N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,17 +316,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1287614-4053-4688-a850-15c3070e586d";
-				PROVISIONING_PROFILE_SPECIFIER = "instamojo-adhoc";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		58B1589C1E7AB96300AAB87A /* Release */ = {
+		5842FFBD1E80F162003C1FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YB8APMPG5N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -360,34 +333,31 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1287614-4053-4688-a850-15c3070e586d";
-				PROVISIONING_PROFILE_SPECIFIER = "instamojo-adhoc";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B158831E7AB96300AAB87A /* Build configuration list for PBXProject "Sample" */ = {
+		5842FF9F1E80F162003C1FF5 /* Build configuration list for PBXProject "Sample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58B158981E7AB96300AAB87A /* Debug */,
-				58B158991E7AB96300AAB87A /* Release */,
+				5842FFB91E80F162003C1FF5 /* Debug */,
+				5842FFBA1E80F162003C1FF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B1589A1E7AB96300AAB87A /* Build configuration list for PBXNativeTarget "Sample" */ = {
+		5842FFBB1E80F162003C1FF5 /* Build configuration list for PBXNativeTarget "Sample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58B1589B1E7AB96300AAB87A /* Debug */,
-				58B1589C1E7AB96300AAB87A /* Release */,
+				5842FFBC1E80F162003C1FF5 /* Debug */,
+				5842FFBD1E80F162003C1FF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 58B158801E7AB96300AAB87A /* Project object */;
+	rootObject = 5842FF9C1E80F162003C1FF5 /* Project object */;
 }
