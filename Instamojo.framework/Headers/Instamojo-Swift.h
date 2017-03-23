@@ -342,7 +342,7 @@ SWIFT_CLASS("_TtC9Instamojo5Order")
 @interface Order : NSObject
 @property (nonatomic, copy) NSString * _Nullable id;
 @property (nonatomic, copy) NSString * _Nullable transactionID;
-@property (nonatomic, readonly, copy) NSString * _Nullable buyerName;
+@property (nonatomic, copy) NSString * _Nullable buyerName;
 @property (nonatomic, copy) NSString * _Nullable buyerEmail;
 @property (nonatomic, copy) NSString * _Nullable buyerPhone;
 @property (nonatomic, copy) NSString * _Nullable amount;
@@ -360,7 +360,16 @@ SWIFT_CLASS("_TtC9Instamojo5Order")
 @property (nonatomic, strong) WalletOptions * _Null_unspecified walletOptions;
 @property (nonatomic, strong) UPIOptions * _Null_unspecified upiOptions;
 - (nonnull instancetype)initWithAuthToken:(NSString * _Nonnull)authToken transactionID:(NSString * _Nonnull)transactionID buyerName:(NSString * _Nonnull)buyerName buyerEmail:(NSString * _Nonnull)buyerEmail buyerPhone:(NSString * _Nonnull)buyerPhone amount:(NSString * _Nonnull)amount description:(NSString * _Nonnull)description webhook:(NSString * _Nonnull)webhook OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)isValid;
+- (NSDictionary * _Nonnull)isValidName;
+- (NSDictionary * _Nonnull)isValidEmail;
 - (BOOL)validateEmailWithEmail:(NSString * _Nonnull)email;
+- (NSDictionary * _Nonnull)isValidPhone;
+- (NSDictionary * _Nonnull)isValidAmount;
+- (NSDictionary * _Nonnull)isValidDescription;
+- (NSDictionary * _Nonnull)isValidTransactionID;
+- (NSDictionary * _Nonnull)isValidRedirectURL;
+- (NSDictionary * _Nonnull)isValidWebhook;
 - (BOOL)isValidURLWithUrlString:(NSString * _Nonnull)urlString;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
@@ -411,6 +420,59 @@ SWIFT_CLASS("_TtC9Instamojo21PaymentViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UPISubmissionResponse;
+@protocol UPICallBack;
+
+SWIFT_CLASS("_TtC9Instamojo7Request")
+@interface Request : NSObject
+@property (nonatomic, strong) Order * _Nullable order;
+@property (nonatomic, copy) NSString * _Nullable orderID;
+@property (nonatomic, copy) NSString * _Nullable accessToken;
+@property (nonatomic, strong) Card * _Nullable card;
+@property (nonatomic, copy) NSString * _Nullable virtualPaymentAddress;
+@property (nonatomic, strong) UPISubmissionResponse * _Nullable upiSubmissionResponse;
+@property (nonatomic, strong) id <OrderRequestCallBack> _Nullable orderRequestCallBack;
+@property (nonatomic, strong) id <UPICallBack> _Nullable upiCallBack;
+/**
+  Network Request to create an order ID from Instamojo server.
+  @param order                Order model with all the mandatory fields set.
+  @param orderRequestCallBack Callback interface for the Asynchronous Network Call.
+*/
+- (nonnull instancetype)initWithOrder:(Order * _Nonnull)order orderRequestCallBack:(id <OrderRequestCallBack> _Nonnull)orderRequestCallBack OBJC_DESIGNATED_INITIALIZER;
+/**
+  Network request for UPISubmission Submission
+  @param order                 {@link Order}
+  @param virtualPaymentAddress String
+  @param upiCallback           {@link UPICallback}
+*/
+- (nonnull instancetype)initWithOrder:(Order * _Nonnull)order virtualPaymentAddress:(NSString * _Nonnull)virtualPaymentAddress upiCallBack:(id <UPICallBack> _Nonnull)upiCallBack OBJC_DESIGNATED_INITIALIZER;
+/**
+  Network Request to check the status of the transaction
+  @param order                 {@link Order}
+  @param upiSubmissionResponse {@link UPISubmissionResponse}
+  @param upiCallback           {@link UPICallback}
+*/
+- (nonnull instancetype)initWithOrder:(Order * _Nonnull)order upiSubmissionResponse:(UPISubmissionResponse * _Nonnull)upiSubmissionResponse upiCallback:(id <UPICallBack> _Nonnull)upiCallback OBJC_DESIGNATED_INITIALIZER;
+/**
+  Network request to fetch the order
+  @param accessToken           String
+  @param orderID               String
+  @param orderRequestCallBack  {@link OrderRequestCallBack}
+*/
+- (nonnull instancetype)initWithOrderID:(NSString * _Nonnull)orderID accessToken:(NSString * _Nonnull)accessToken orderRequestCallBack:(id <OrderRequestCallBack> _Nonnull)orderRequestCallBack OBJC_DESIGNATED_INITIALIZER;
+- (void)execute;
+- (void)createOrder;
+- (void)updateTransactionDetailsWithJsonResponse:(NSDictionary<NSString *, id> * _Nonnull)jsonResponse;
+- (void)fetchOrder;
+- (void)parseOrderWithResponse:(NSDictionary<NSString *, id> * _Nonnull)response;
+- (void)juspayRequest;
+- (void)executeUPIRequest;
+- (UPISubmissionResponse * _Nonnull)parseUPIResponseWithResponse:(NSDictionary<NSString *, id> * _Nonnull)response;
+- (void)upiStatusCheck;
+- (NSString * _Nonnull)getUserAgent;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
 @class UIActivityIndicatorView;
 @class UIBlurEffect;
 @class UIVisualEffect;
@@ -433,7 +495,6 @@ SWIFT_CLASS("_TtC9Instamojo7Spinner")
 - (nonnull instancetype)initWithEffect:(UIVisualEffect * _Nullable)effect SWIFT_UNAVAILABLE;
 @end
 
-@class UPISubmissionResponse;
 
 SWIFT_PROTOCOL("_TtP9Instamojo11UPICallBack_")
 @protocol UPICallBack
