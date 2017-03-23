@@ -162,10 +162,12 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
                         }
                     }
                 } catch {
+                     self.payButton.isEnabled = true
                     Logger.logError(tag: " Sample - Fetch Token", message: String(describing: error))
                     self.showAlert(errorMessage: "Failed to fetch order tokens")
                 }
             } else {
+                self.payButton.isEnabled = true
                 print(error!.localizedDescription)
                 self.showAlert(errorMessage: "Failed to fetch order tokens")
             }
@@ -252,6 +254,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         if !error.isEmpty {
             DispatchQueue.main.async {
                 self.spinner.hide()
+                self.payButton.isEnabled = true
                 self.showAlert(errorMessage: error)
             }
         } else {
