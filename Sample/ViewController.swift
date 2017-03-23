@@ -119,6 +119,10 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     }
     
     @IBAction func showPaymentView(_ sender: Any) {
+        let amount = self.amountTextField.text
+        if !(amount?.isEmpty)! && !(amount?.contains("."))!{
+            self.amountTextField.text = self.amountTextField.text! + ".00"
+        }
         payButton.isEnabled = false
         self.textField.resignFirstResponder()
         scrollView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
