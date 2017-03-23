@@ -55,7 +55,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="8vo-oi-GnY"/>
                                         </constraints>
-                                        <color key="onTintColor" red="1" green="0.16577688669999999" blue="0.1904933872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="environmentSelection:" destination="BYZ-38-t0r" eventType="valueChanged" id="KyN-2Y-r2c"/>
                                         </connections>
@@ -375,7 +374,7 @@
                                         <rect key="frame" x="0.0" y="28" width="353" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4UI-Pk-qFj" id="bsM-Z1-q7I">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
