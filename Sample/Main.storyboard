@@ -55,7 +55,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="8vo-oi-GnY"/>
                                         </constraints>
-                                        <color key="onTintColor" red="1" green="0.16577688669999999" blue="0.1904933872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="environmentSelection:" destination="BYZ-38-t0r" eventType="valueChanged" id="eg6-He-kdp"/>
                                         </connections>
@@ -273,7 +272,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Instamojo SDK Demo" id="Bhj-Fp-1xF"/>
                     <connections>
-                        <outlet property="amountDivider" destination="vNm-Vp-24r" id="NNj-Sp-ncc"/>
+                        <outlet property="amountDivider" destination="vNm-Vp-24r" id="upR-iN-aWz"/>
                         <outlet property="amountErrorLabel" destination="Mkb-7a-6si" id="PQf-50-kjz"/>
                         <outlet property="amountTextField" destination="flK-tI-yop" id="21U-Em-syj"/>
                         <outlet property="descriptionDivider" destination="Z9x-px-EzD" id="j19-mq-H60"/>
@@ -374,7 +373,7 @@
                                         <rect key="frame" x="0.0" y="28" width="353" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4UI-Pk-qFj" id="bsM-Z1-q7I">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

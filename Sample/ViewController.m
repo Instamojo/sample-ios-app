@@ -284,7 +284,7 @@ float keyboardHeight;
                  NSString *status = [NSString stringWithFormat:@"Transaction Successful for id - %@. Refund will be initated.", paymentID];
                  [self showAlert:status];
                  dispatch_async(dispatch_get_main_queue(), ^(void){
-                      
+                     [self refundPayment:amount];
                  });
              }
          }else{
@@ -293,8 +293,25 @@ float keyboardHeight;
      }];
 }
 
--(void)refundPayment{
-    
+-(void)refundPayment:(NSString *) amount{
+    NSString *params = [NSString stringWithFormat:@"env=%@&transaction_id=%@&amount=%@&type=PTH&body=Refund the Amount",[environment objectForKey:self.selectedEnv.text],transactionID,amount];
+ 
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://sample-sdk-server.instamojo.com/refund/"]];
+    request.HTTPMethod = @"POST";
+    [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding]];
+    [request addValue:[NSString stringWithFormat:@"Bearer %@",accessToken] forHTTPHeaderField:@"Authorization"];
+    [request addValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded"] forHTTPHeaderField:@"Content-Type"];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         dispatch_async(dispatch_get_main_queue(), ^(void){
+             [spinner hide];
+         });
+         if (data.length > 0 && connectionError == nil){
+             [self showAlert:@"Refund intiated successfully"];
+         }else{
+             [self showAlert:@"Failed to intiate refund"];
+         }
+     }];
 }
 
 @end
