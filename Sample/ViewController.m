@@ -27,13 +27,12 @@ float keyboardHeight;
     [self addNotificationToRecievePaymentCompletion];
     
     //Add Loader/Spinner to the current view
-    spinner = [Spinner init];
-    [spinner setText:@"Please wait.."];
+    spinner = [[Spinner alloc]initWithText:@"Please wait.."];
     [spinner hide];
     [self.view addSubview:spinner];
     
     //Set data mutable array to choose from prod and test environment
-    environment = [NSMutableDictionary alloc];
+    environment = [[NSMutableDictionary alloc]init];
     [environment setObject:@"production" forKey:@"Production Environment"];
     [environment setObject:@"test" forKey:@"Test Environment"];
     
@@ -74,15 +73,16 @@ float keyboardHeight;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSObject *userCancelled = [defaults objectForKey:@"USER-CANCELLED"];
     if (userCancelled != nil) {
-        
+        [self showAlert:@"Transaction cancelled by user, back button was pressed."];
     }
     NSObject *onRedirectURL = [defaults objectForKey:@"ON-REDIRECT-URL"];
     if (onRedirectURL != nil){
+        [self checkPaymentStatus];
         
     }
     NSObject *cancelledOnVerify = [defaults objectForKey:@"USER-CANCELLED-ON-VERIFY"];
     if (cancelledOnVerify != nil){
-        
+        [self showAlert:@"Transaction cancelled by user when trying to verify payment."];
     }
 }
 
@@ -95,6 +95,7 @@ float keyboardHeight;
     self.payButton.enabled = false;
     [textField resignFirstResponder];
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:true];
+    [self fetchOrder];
 }
 
 - (IBAction)environmentSelection:(UISwitch *)sender {
@@ -156,15 +157,14 @@ float keyboardHeight;
 }
 
 -(void)createOrder {
-    Order *order = [Order init];
-    order.transactionID = transactionID;
-    order.authToken = accessToken;
-    order.buyerName = self.nameTextField.text;
-    order.buyerEmail = self.emailTextField.text;
-    order.buyerPhone = self.phoneNumberTextField.text;
-    order.amount = self.amountTextField.text;
-    order.orderDescription = self.descriptionTextField.text;
-    order.webhook = @"http://your.server.com/webhook/";
+    NSString *name = self.nameTextField.text;
+    NSString *email = self.emailTextField.text;
+    NSString *buyerPhone = self.phoneNumberTextField.text;
+    NSString *amount = self.amountTextField.text;
+    NSString *orderDescription = self.descriptionTextField.text;
+    NSString *webhook = @"http://your.server.com/webhook/";
+    
+    Order *order = [[Order alloc]initWithAuthToken:accessToken transactionID:transactionID buyerName:name buyerEmail:email buyerPhone:buyerPhone amount:amount description:orderDescription webhook:webhook];
     
     NSDictionary *nameValidity = [order isValidName];
     NSDictionary *emailValidity = [order isValidEmail];
@@ -182,8 +182,7 @@ float keyboardHeight;
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [spinner show];
         });
-        Request *request = [Request init];
-        request = [request initWithOrder:order orderRequestCallBack:self];
+        Request *request = [[Request alloc]initWithOrder:order orderRequestCallBack:self];
         [request execute];
     }
 }
@@ -225,10 +224,10 @@ float keyboardHeight;
     if (show) {
         [self.amountErrorLabel setHidden:false];
         self.amountErrorLabel.text = message;
-        self.amountDivider.backgroundColor = [UIColor redColor];
+        self.amountTextfieldDivider.backgroundColor = [UIColor redColor];
     }else{
         [self.amountErrorLabel setHidden:true];
-        self.amountDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.amountTextfieldDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 
@@ -294,6 +293,7 @@ float keyboardHeight;
 }
 
 -(void)refundPayment:(NSString *) amount{
+    [spinner show];
     NSString *params = [NSString stringWithFormat:@"env=%@&transaction_id=%@&amount=%@&type=PTH&body=Refund the Amount",[environment objectForKey:self.selectedEnv.text],transactionID,amount];
  
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://sample-sdk-server.instamojo.com/refund/"]];

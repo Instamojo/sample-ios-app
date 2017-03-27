@@ -7,43 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580D15E51E88E7E600D2574F /* Instamojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; };
+		580D15E61E88E7E600D2574F /* Instamojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		580D15E81E88E7F600D2574F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580D15E31E88E4DE00D2574F /* JavaScriptCore.framework */; };
+		580D15E91E88E7FB00D2574F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580D15E11E88E4BD00D2574F /* CoreTelephony.framework */; };
+		580D15EA1E88E80000D2574F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580D15DF1E88E4B800D2574F /* SystemConfiguration.framework */; };
 		582100211E82745600C7A93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582100201E82745600C7A93C /* Assets.xcassets */; };
 		582100231E82746200C7A93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582100221E82746200C7A93C /* LaunchScreen.storyboard */; };
 		5842FFA91E80F162003C1FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFA81E80F162003C1FF5 /* main.m */; };
 		5842FFAC1E80F162003C1FF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFAB1E80F162003C1FF5 /* AppDelegate.m */; };
 		5842FFAF1E80F162003C1FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFAE1E80F162003C1FF5 /* ViewController.m */; };
-		5842FFC01E80F17F003C1FF5 /* Instamojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; };
-		5842FFC11E80F17F003C1FF5 /* Instamojo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5842FFC21E80F17F003C1FF5 /* JuspaySafeBrowser.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		586740951E827BE000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740941E827BE000E8148E /* Main.storyboard */; };
+		58A4BBCD1E88F019000D0AC4 /* JuspaySafeBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5842FFC31E80F17F003C1FF5 /* Embed Frameworks */ = {
+		580D15E71E88E7E600D2574F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5842FFC11E80F17F003C1FF5 /* Instamojo.framework in Embed Frameworks */,
+				580D15E61E88E7E600D2574F /* Instamojo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5842FFC41E80F17F003C1FF5 /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				5842FFC21E80F17F003C1FF5 /* JuspaySafeBrowser.bundle in Embed PlugIns */,
-			);
-			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		580D15DF1E88E4B800D2574F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		580D15E11E88E4BD00D2574F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		580D15E31E88E4DE00D2574F /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		582100201E82745600C7A93C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582100221E82746200C7A93C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5842FFA41E80F162003C1FF5 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,20 +58,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5842FFC01E80F17F003C1FF5 /* Instamojo.framework in Frameworks */,
+				580D15EA1E88E80000D2574F /* SystemConfiguration.framework in Frameworks */,
+				580D15E91E88E7FB00D2574F /* CoreTelephony.framework in Frameworks */,
+				580D15E81E88E7F600D2574F /* JavaScriptCore.framework in Frameworks */,
+				580D15E51E88E7E600D2574F /* Instamojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5842FF9B1E80F162003C1FF5 = {
+		580D15DE1E88E4B800D2574F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */,
 				5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */,
+				580D15E31E88E4DE00D2574F /* JavaScriptCore.framework */,
+				580D15E11E88E4BD00D2574F /* CoreTelephony.framework */,
+				580D15DF1E88E4B800D2574F /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5842FF9B1E80F162003C1FF5 = {
+			isa = PBXGroup;
+			children = (
 				5842FFA61E80F162003C1FF5 /* Sample */,
 				5842FFA51E80F162003C1FF5 /* Products */,
+				580D15DE1E88E4B800D2574F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,9 +131,8 @@
 				5842FFA01E80F162003C1FF5 /* Sources */,
 				5842FFA11E80F162003C1FF5 /* Frameworks */,
 				5842FFA21E80F162003C1FF5 /* Resources */,
-				5842FFC31E80F17F003C1FF5 /* Embed Frameworks */,
-				5842FFC41E80F17F003C1FF5 /* Embed PlugIns */,
 				5842FFC71E80F93A003C1FF5 /* ShellScript */,
+				580D15E71E88E7E600D2574F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,7 +155,7 @@
 					5842FFA31E80F162003C1FF5 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = YB8APMPG5N;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -174,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A4BBCD1E88F019000D0AC4 /* JuspaySafeBrowser.bundle in Resources */,
 				586740951E827BE000E8148E /* Main.storyboard in Resources */,
 				582100231E82746200C7A93C /* LaunchScreen.storyboard in Resources */,
 				582100211E82745600C7A93C /* Assets.xcassets in Resources */,
@@ -306,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YB8APMPG5N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +326,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7e9ae750-f343-48aa-bc3a-d30df40d4117";
+				PROVISIONING_PROFILE_SPECIFIER = "instamojo-adhoc";
 			};
 			name = Debug;
 		};
@@ -323,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YB8APMPG5N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -333,6 +346,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.instamojo.ios.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7e9ae750-f343-48aa-bc3a-d30df40d4117";
+				PROVISIONING_PROFILE_SPECIFIER = "instamojo-adhoc";
 			};
 			name = Release;
 		};

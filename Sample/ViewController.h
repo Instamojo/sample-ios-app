@@ -12,7 +12,9 @@
 @interface ViewController : UIViewController <UITextFieldDelegate,OrderRequestCallBack>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (strong, nonatomic) IBOutlet UILabel *selectedEnv;
+
 @property (strong, nonatomic) IBOutlet UISwitch *environmentSwitch;
 - (IBAction)environmentSelection:(UISwitch *)sender;
 
@@ -21,18 +23,21 @@
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UITextField *amountTextField;
 @property (strong, nonatomic) IBOutlet UITextField *descriptionTextField;
+
 @property (strong, nonatomic) IBOutlet UIButton *payButton;
 - (IBAction)showPaymentView:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIView *nameDivider;
 @property (strong, nonatomic) IBOutlet UIView *emailDivider;
 @property (strong, nonatomic) IBOutlet UIView *phoneNumberDivider;
-@property (strong, nonatomic) IBOutlet UIView *amountDivider;
 @property (strong, nonatomic) IBOutlet UIView *descriptionDivider;
+
 @property (strong, nonatomic) IBOutlet UILabel *nameErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *emailErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *phoneNumberErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *amountErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionErrorLabel;
+@property (strong, nonatomic) IBOutlet UIView *amountTextfieldDivider;
 
 
 @end

@@ -29,7 +29,7 @@
         <!--Instamojo SDK Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -272,9 +272,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Instamojo SDK Demo" id="Bhj-Fp-1xF"/>
                     <connections>
-                        <outlet property="amountDivider" destination="vNm-Vp-24r" id="upR-iN-aWz"/>
                         <outlet property="amountErrorLabel" destination="Mkb-7a-6si" id="PQf-50-kjz"/>
                         <outlet property="amountTextField" destination="flK-tI-yop" id="21U-Em-syj"/>
+                        <outlet property="amountTextfieldDivider" destination="vNm-Vp-24r" id="6gh-eI-W52"/>
                         <outlet property="descriptionDivider" destination="Z9x-px-EzD" id="j19-mq-H60"/>
                         <outlet property="descriptionErrorLabel" destination="ScJ-IA-kHH" id="BOq-i9-VJM"/>
                         <outlet property="descriptionTextField" destination="oKA-4B-tta" id="lAN-08-dVe"/>
@@ -290,6 +290,7 @@
                         <outlet property="phoneNumberErrorLabel" destination="7cE-fz-NXy" id="HLi-vP-9kw"/>
                         <outlet property="phoneNumberTextField" destination="b8c-eV-4KM" id="5Uv-KV-4IA"/>
                         <outlet property="scrollView" destination="Qfy-TU-6WN" id="d3g-zp-DMU"/>
+                        <outlet property="selectedEnv" destination="Q8a-RK-7gm" id="iDy-h3-y7C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -373,7 +374,7 @@
                                         <rect key="frame" x="0.0" y="28" width="353" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4UI-Pk-qFj" id="bsM-Z1-q7I">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
