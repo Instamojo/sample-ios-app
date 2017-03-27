@@ -220,14 +220,14 @@ SWIFT_CLASS("_TtC9Instamojo10EMIOptions")
 - (nonnull instancetype)initWithMerchantID:(NSString * _Nonnull)merchantID orderID:(NSString * _Nonnull)orderID url:(NSString * _Nonnull)url emiBanks:(NSArray<EMIBank *> * _Nonnull)emiBanks OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSDictionary;
+@class NSMutableArray;
 @class UITableView;
 @class UITableViewCell;
 
 SWIFT_CLASS("_TtC9Instamojo14EMIOptionsView")
 @interface EMIOptionsView : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified emiOptionsTableView;
-@property (nonatomic, strong) NSDictionary * _Nonnull values;
+@property (nonatomic, strong) NSMutableArray * _Null_unspecified values;
 @property (nonatomic, strong) Order * _Null_unspecified order;
 @property (nonatomic, strong) EMIBank * _Null_unspecified selectedBank;
 - (void)viewDidLoad;
@@ -236,6 +236,8 @@ SWIFT_CLASS("_TtC9Instamojo14EMIOptionsView")
 - (NSString * _Nonnull)getFinalAmountWithAmount:(double)amount;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)viewDidAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -289,6 +291,7 @@ SWIFT_CLASS("_TtC9Instamojo15ListOptionsView")
 - (void)startJuspayBrowserWithParams:(BrowserParams * _Nonnull)params;
 - (void)setOptions;
 - (void)viewWillDisappear:(BOOL)animated;
+- (void)viewDidAppear:(BOOL)animated;
 - (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -337,6 +340,7 @@ SWIFT_CLASS("_TtC9Instamojo17NetBankingOptions")
 
 @class WalletOptions;
 @class UPIOptions;
+@class NSDictionary;
 
 SWIFT_CLASS("_TtC9Instamojo5Order")
 @interface Order : NSObject
@@ -380,7 +384,6 @@ SWIFT_PROTOCOL("_TtP9Instamojo20OrderRequestCallBack_")
 - (void)onFinishWithOrder:(Order * _Nonnull)order error:(NSString * _Nonnull)error;
 @end
 
-@class NSMutableArray;
 
 SWIFT_CLASS("_TtC9Instamojo18PaymentOptionsView")
 @interface PaymentOptionsView : UIViewController <UITableViewDataSource, UITableViewDelegate>
