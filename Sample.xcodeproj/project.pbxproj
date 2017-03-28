@@ -19,6 +19,8 @@
 		5842FFAF1E80F162003C1FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5842FFAE1E80F162003C1FF5 /* ViewController.m */; };
 		586740951E827BE000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740941E827BE000E8148E /* Main.storyboard */; };
 		58A4BBCD1E88F019000D0AC4 /* JuspaySafeBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */; };
+		58DC26B61E8A88FD00D27CBD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DC26B41E8A88FD00D27CBD /* Fabric.framework */; };
+		58DC26B71E8A88FD00D27CBD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DC26B51E8A88FD00D27CBD /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instamojo.framework; sourceTree = "<group>"; };
 		5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JuspaySafeBrowser.bundle; sourceTree = "<group>"; };
 		586740941E827BE000E8148E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		58DC26B41E8A88FD00D27CBD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		58DC26B51E8A88FD00D27CBD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +63,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				580D15EA1E88E80000D2574F /* SystemConfiguration.framework in Frameworks */,
+				58DC26B61E8A88FD00D27CBD /* Fabric.framework in Frameworks */,
 				580D15E91E88E7FB00D2574F /* CoreTelephony.framework in Frameworks */,
 				580D15E81E88E7F600D2574F /* JavaScriptCore.framework in Frameworks */,
+				58DC26B71E8A88FD00D27CBD /* Crashlytics.framework in Frameworks */,
 				580D15E51E88E7E600D2574F /* Instamojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +77,8 @@
 		580D15DE1E88E4B800D2574F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58DC26B41E8A88FD00D27CBD /* Fabric.framework */,
+				58DC26B51E8A88FD00D27CBD /* Crashlytics.framework */,
 				5842FFBE1E80F17F003C1FF5 /* Instamojo.framework */,
 				5842FFBF1E80F17F003C1FF5 /* JuspaySafeBrowser.bundle */,
 				580D15E31E88E4DE00D2574F /* JavaScriptCore.framework */,
@@ -131,8 +139,9 @@
 				5842FFA01E80F162003C1FF5 /* Sources */,
 				5842FFA11E80F162003C1FF5 /* Frameworks */,
 				5842FFA21E80F162003C1FF5 /* Resources */,
-				5842FFC71E80F93A003C1FF5 /* ShellScript */,
 				580D15E71E88E7E600D2574F /* Embed Frameworks */,
+				58DC26B31E8A88E600D27CBD /* ShellScript */,
+				58295D6C1E8A8B6E00DE8E3A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -192,7 +201,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5842FFC71E80F93A003C1FF5 /* ShellScript */ = {
+		58295D6C1E8A8B6E00DE8E3A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,6 +213,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
+		58DC26B31E8A88E600D27CBD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 07ad6ec4919f509fb3b675750673a5c630614723 d90b71c648f26bc9c8855e9e3e4c36ca28928285735ebf774e77028d9169068e";
 		};
 /* End PBXShellScriptBuildPhase section */
 
