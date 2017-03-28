@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView *nameDivider;
 @property (strong, nonatomic) IBOutlet UIView *emailDivider;
 @property (strong, nonatomic) IBOutlet UIView *phoneNumberDivider;
+@property (strong, nonatomic) IBOutlet UIView *amountTextfieldDivider;
 @property (strong, nonatomic) IBOutlet UIView *descriptionDivider;
 
 @property (strong, nonatomic) IBOutlet UILabel *nameErrorLabel;
@@ -37,7 +38,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *phoneNumberErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *amountErrorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionErrorLabel;
-@property (strong, nonatomic) IBOutlet UIView *amountTextfieldDivider;
+
 
 
 @end

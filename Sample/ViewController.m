@@ -56,7 +56,9 @@ float keyboardHeight;
     self.emailTextField.delegate = self;
     self.descriptionTextField.delegate = self;
     self.phoneNumberTextField.delegate = self;
- }
+    self.scrollView.scrollEnabled = YES;
+    
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
@@ -66,8 +68,12 @@ float keyboardHeight;
     if (nextResponder) {
         // Found next responder, so set it.
         [nextResponder becomeFirstResponder];
+        if (textField != self.nameTextField){
+            [self.scrollView setContentOffset:CGPointMake(0, keyboardHeight) animated:true];
+        }
     } else {
         // Not found, so remove keyboard.
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:true];
         [textField resignFirstResponder];
     }
     return NO; // We do not want UITextField to insert line-breaks.
@@ -108,6 +114,11 @@ float keyboardHeight;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+     self.payButton.enabled = true;
 }
 
 
@@ -185,18 +196,21 @@ float keyboardHeight;
     NSString *webhook = @"http://your.server.com/webhook/";
     
     Order *order = [[Order alloc]initWithAuthToken:accessToken transactionID:transactionID buyerName:name buyerEmail:email buyerPhone:buyerPhone amount:amount description:orderDescription webhook:webhook];
+        NSDictionary *nameValidity = [order isValidName];
+        NSDictionary *emailValidity = [order isValidEmail];
+        NSDictionary *phoneValidity = [order isValidPhone];
+        NSDictionary *amountValidity = [order isValidAmount];
+        NSDictionary *descriptionValidity = [order isValidDescription];
     
-    NSDictionary *nameValidity = [order isValidName];
-    NSDictionary *emailValidity = [order isValidEmail];
-    NSDictionary *phoneValidity = [order isValidPhone];
-    NSDictionary *amountValidity = [order isValidAmount];
-    NSDictionary *descriptionValidity = [order isValidDescription];
+        [self invalidName:[[nameValidity objectForKey:@"validity"] boolValue] message:[nameValidity objectForKey:@"error"]];
     
-    [self invalidName:![[nameValidity objectForKey:@"validity"] boolValue] message:[nameValidity objectForKey:@"error"]];
-    [self invalidEmail:![[emailValidity objectForKey:@"validity"] boolValue] message:[emailValidity objectForKey:@"error"]];
-    [self invalidName:![[phoneValidity objectForKey:@"validity"] boolValue] message:[phoneValidity objectForKey:@"error"]];
-    [self invalidName:![[amountValidity objectForKey:@"validity"] boolValue] message:[amountValidity objectForKey:@"error"]];
-    [self invalidName:![[descriptionValidity objectForKey:@"validity"] boolValue] message:[descriptionValidity objectForKey:@"error"]];
+        [self invalidEmail:[[emailValidity objectForKey:@"validity"] boolValue] message:[emailValidity objectForKey:@"error"]];
+    
+        [self invalidPhoneNumber:[[phoneValidity objectForKey:@"validity"] boolValue] message:[phoneValidity objectForKey:@"error"]];
+    
+        [self invalidAmount:[[amountValidity objectForKey:@"validity"] boolValue] message:[amountValidity objectForKey:@"error"]];
+    
+        [self invalidDescription:[[descriptionValidity objectForKey:@"validity"] boolValue] message:[descriptionValidity objectForKey:@"error"]];
     
     if ([order isValid]){
         dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -204,61 +218,65 @@ float keyboardHeight;
         });
         Request *request = [[Request alloc]initWithOrder:order orderRequestCallBack:self];
         [request execute];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.payButton.enabled = true;
+        });
     }
 }
 
--(void)invalidName:(BOOL) show message:(NSString *)message {
-    if (show) {
-        [self.nameErrorLabel setHidden:false];
+-(void)invalidName:(BOOL) validity message:(NSString *)message {
+    if (validity) {
+        self.nameErrorLabel.hidden = true;
+        self.nameDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }else{
+        self.nameErrorLabel.hidden = false;
         self.nameErrorLabel.text = message;
         self.nameDivider.backgroundColor = [UIColor redColor];
-    }else{
-        [self.nameErrorLabel setHidden:true];
-        self.nameDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 
--(void)invalidEmail:(BOOL) show message:(NSString *)message {
-    if (show) {
-        [self.emailErrorLabel setHidden:false];
+-(void)invalidEmail:(BOOL) validity message:(NSString *)message {
+    if (validity) {
+        self.emailErrorLabel.hidden = true;
+        self.emailDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }else{
+        self.emailErrorLabel.hidden = false;
         self.emailErrorLabel.text = message;
         self.emailDivider.backgroundColor = [UIColor redColor];
-    }else{
-        [self.emailErrorLabel setHidden:true];
-        self.emailDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 
--(void)invalidPhoneNumber:(BOOL) show message:(NSString *)message {
-    if (show) {
-        [self.phoneNumberErrorLabel setHidden:false];
+-(void)invalidPhoneNumber:(BOOL) validity message:(NSString *)message {
+    if (validity) {
+        self.phoneNumberErrorLabel.hidden = true;
+        self.phoneNumberDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }else{
+        self.phoneNumberErrorLabel.hidden = false;
         self.phoneNumberErrorLabel.text = message;
         self.phoneNumberDivider.backgroundColor = [UIColor redColor];
-    }else{
-        [self.phoneNumberErrorLabel setHidden:true];
-        self.phoneNumberDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 
--(void)invalidAmount:(BOOL) show message:(NSString *)message {
-    if (show) {
-        [self.amountErrorLabel setHidden:false];
+-(void)invalidAmount:(BOOL) validity message:(NSString *)message {
+    if (validity) {
+        self.amountErrorLabel.hidden = true;
+        self.amountTextfieldDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }else{
+        self.amountErrorLabel.hidden = false;
         self.amountErrorLabel.text = message;
         self.amountTextfieldDivider.backgroundColor = [UIColor redColor];
-    }else{
-        [self.amountErrorLabel setHidden:true];
-        self.amountTextfieldDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 
--(void)invalidDescription:(BOOL) show message:(NSString *)message {
-    if (show) {
-        [self.descriptionErrorLabel setHidden:false];
+-(void)invalidDescription:(BOOL) validity message:(NSString *)message {
+    if (validity) {
+        self.descriptionErrorLabel.hidden = true;
+        self.descriptionDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }else{
+        self.descriptionErrorLabel.hidden = false;
         self.descriptionErrorLabel.text = message;
         self.descriptionDivider.backgroundColor = [UIColor redColor];
-    }else{
-        [self.descriptionErrorLabel setHidden:true];
-        self.descriptionDivider.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 }
 

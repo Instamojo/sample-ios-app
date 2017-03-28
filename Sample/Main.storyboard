@@ -263,6 +263,9 @@
                                     <constraint firstItem="m28-De-tUU" firstAttribute="trailing" secondItem="nwj-aX-a3s" secondAttribute="trailing" id="yUo-31-W49"/>
                                     <constraint firstItem="i1f-LA-Q2Z" firstAttribute="top" secondItem="ScJ-IA-kHH" secondAttribute="bottom" constant="21" id="zjM-6q-fVk"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oCo-p2-7tl"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -275,22 +278,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="Instamojo SDK Demo" id="Bhj-Fp-1xF"/>
                     <connections>
-                        <outlet property="amountErrorLabel" destination="Mkb-7a-6si" id="PQf-50-kjz"/>
+                        <outlet property="amountErrorLabel" destination="Mkb-7a-6si" id="4Jq-XI-vY8"/>
                         <outlet property="amountTextField" destination="flK-tI-yop" id="21U-Em-syj"/>
-                        <outlet property="amountTextfieldDivider" destination="vNm-Vp-24r" id="6gh-eI-W52"/>
-                        <outlet property="descriptionDivider" destination="Z9x-px-EzD" id="j19-mq-H60"/>
-                        <outlet property="descriptionErrorLabel" destination="ScJ-IA-kHH" id="BOq-i9-VJM"/>
+                        <outlet property="amountTextfieldDivider" destination="vNm-Vp-24r" id="y0p-ps-MXX"/>
+                        <outlet property="descriptionDivider" destination="Z9x-px-EzD" id="c9r-5n-6Ze"/>
+                        <outlet property="descriptionErrorLabel" destination="ScJ-IA-kHH" id="A3z-yG-n0V"/>
                         <outlet property="descriptionTextField" destination="oKA-4B-tta" id="lAN-08-dVe"/>
-                        <outlet property="emailDivider" destination="HSC-FQ-8h8" id="5YR-OL-m6J"/>
-                        <outlet property="emailErrorLabel" destination="oOd-zU-rpj" id="gWf-Vw-SPc"/>
+                        <outlet property="emailDivider" destination="HSC-FQ-8h8" id="Hab-sE-l9E"/>
+                        <outlet property="emailErrorLabel" destination="oOd-zU-rpj" id="hks-Vl-Hid"/>
                         <outlet property="emailTextField" destination="Nzz-kB-5iN" id="a25-nF-9ox"/>
                         <outlet property="environmentSwitch" destination="isA-av-Ke3" id="gcA-yG-1nW"/>
-                        <outlet property="nameDivider" destination="m28-De-tUU" id="rgf-yR-D0V"/>
-                        <outlet property="nameErrorLabel" destination="nwj-aX-a3s" id="dIp-2n-gR9"/>
+                        <outlet property="nameDivider" destination="m28-De-tUU" id="fYX-Xr-Awa"/>
+                        <outlet property="nameErrorLabel" destination="nwj-aX-a3s" id="kqJ-jf-Aji"/>
                         <outlet property="nameTextField" destination="WSK-dP-dbB" id="Jvi-lr-Fd2"/>
                         <outlet property="payButton" destination="i1f-LA-Q2Z" id="eVp-mi-7Nw"/>
-                        <outlet property="phoneNumberDivider" destination="tEn-J8-874" id="KT4-Ca-2zr"/>
-                        <outlet property="phoneNumberErrorLabel" destination="7cE-fz-NXy" id="HLi-vP-9kw"/>
+                        <outlet property="phoneNumberDivider" destination="tEn-J8-874" id="gRU-Xw-Pvh"/>
+                        <outlet property="phoneNumberErrorLabel" destination="7cE-fz-NXy" id="yfj-35-xFm"/>
                         <outlet property="phoneNumberTextField" destination="b8c-eV-4KM" id="5Uv-KV-4IA"/>
                         <outlet property="scrollView" destination="Qfy-TU-6WN" id="d3g-zp-DMU"/>
                         <outlet property="selectedEnv" destination="Q8a-RK-7gm" id="iDy-h3-y7C"/>
