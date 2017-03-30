@@ -254,7 +254,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
   @param baseUrl URl
 */
 + (void)initialize SWIFT_METHOD_FAMILY(none);
-+ (void)setLogLevelWithLevel:(BOOL)level;
++ (void)enableLogWithEnable:(BOOL)enable;
 /**
   Sets the base url for all network calls
   @param baseUrl URl

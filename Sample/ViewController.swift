@@ -74,7 +74,7 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     }
     
     func addNotificationToRecievePaymentCompletion(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.paymentCompletionCallBack), name: NSNotification.Name("JUSPAY"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.paymentCompletionCallBack), name: NSNotification.Name("INSTAMOJO"), object: nil)
     }
     
     func paymentCompletionCallBack() {
