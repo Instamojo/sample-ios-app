@@ -92,7 +92,7 @@ float keyboardHeight;
 }
 
 - (void)addNotificationToRecievePaymentCompletion {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentCompletionCallBack:) name:@"JUSPAY" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paymentCompletionCallBack:) name:@"INSTAMOJO" object:nil];
 }
 
 - (void) paymentCompletionCallBack:(NSNotification *) notification {
