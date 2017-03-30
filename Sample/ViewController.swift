@@ -340,6 +340,12 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
         task.resume()
     }
     
+    func fetchOrderFromInstamojo(orderID : String){
+        spinner.show()
+        let request = Request.init(orderID: orderID, accessToken: self.accessToken, orderRequestCallBack: self)
+        request.execute()
+    }
+    
     func invalidName(show: Bool, error: String){
         if show {
             nameErrorLable.isHidden = false
