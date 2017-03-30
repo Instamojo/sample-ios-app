@@ -352,4 +352,10 @@ float keyboardHeight;
      }];
 }
 
+-(void)fetchOrderFromInstamojo:(NSString *) orderID accessToken:(NSString *)accessToken{
+    [spinner show];
+    Request *request = [[Request alloc] initWithOrderID:orderID accessToken:accessToken orderRequestCallBack:self];
+    [request execute];
+}
+
 @end
