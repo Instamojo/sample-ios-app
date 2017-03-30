@@ -135,6 +135,18 @@ SWIFT_CLASS("_TtC9Instamojo4Card")
 - (nonnull instancetype)initWithCardHolderName:(NSString * _Nonnull)cardHolderName cardNumber:(NSString * _Nonnull)cardNumber date:(NSString * _Nonnull)date cvv:(NSString * _Nonnull)cvv savedCard:(BOOL)savedCard OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)getExpiryMonth;
 - (NSString * _Nonnull)getExpiryYear;
+- (BOOL)isValidCard;
+- (BOOL)isValidCardNumber;
+- (BOOL)isValidCardHolderName;
+- (BOOL)isValidDate;
+- (BOOL)isValidCVV;
+@end
+
+@class BrowserParams;
+
+SWIFT_PROTOCOL("_TtP9Instamojo21JuspayRequestCallBack_")
+@protocol JuspayRequestCallBack
+- (void)onFinishWithParams:(BrowserParams * _Nonnull)params error:(NSString * _Nonnull)error;
 @end
 
 @class MonthYearPickerView;
@@ -144,14 +156,13 @@ SWIFT_CLASS("_TtC9Instamojo4Card")
 @class Spinner;
 @class UITextField;
 @class UIBarButtonItem;
-@class BrowserParams;
 @class UIButton;
 @class UIImageView;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC9Instamojo12CardFormView")
-@interface CardFormView : UIViewController <UITextFieldDelegate>
+@interface CardFormView : UIViewController <UITextFieldDelegate, JuspayRequestCallBack>
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified payButton;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified cvvTextField;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified expiryDateTextField;
@@ -254,15 +265,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
   @param baseUrl URl
 */
 + (void)initialize SWIFT_METHOD_FAMILY(none);
-+ (void)enableLogWithEnable:(BOOL)enable;
++ (void)enableLogWithOption:(BOOL)option;
 /**
   Sets the base url for all network calls
   @param baseUrl URl
 */
 + (void)setBaseUrlWithUrl:(NSString * _Nonnull)url;
 + (void)invokePaymentOptionsViewWithOrder:(Order * _Nonnull)order;
++ (void)makePaymentWithParams:(BrowserParams * _Nonnull)params;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 @class UIStoryboard;
 @class NetBankingBanks;
@@ -435,6 +448,7 @@ SWIFT_CLASS("_TtC9Instamojo7Request")
 @property (nonatomic, copy) NSString * _Nullable virtualPaymentAddress;
 @property (nonatomic, strong) UPISubmissionResponse * _Nullable upiSubmissionResponse;
 @property (nonatomic, strong) id <OrderRequestCallBack> _Nullable orderRequestCallBack;
+@property (nonatomic, strong) id <JuspayRequestCallBack> _Nullable juspayRequestCallBack;
 @property (nonatomic, strong) id <UPICallBack> _Nullable upiCallBack;
 /**
   Network Request to create an order ID from Instamojo server.
@@ -442,6 +456,13 @@ SWIFT_CLASS("_TtC9Instamojo7Request")
   @param orderRequestCallBack Callback interface for the Asynchronous Network Call.
 */
 - (nonnull instancetype)initWithOrder:(Order * _Nonnull)order orderRequestCallBack:(id <OrderRequestCallBack> _Nonnull)orderRequestCallBack OBJC_DESIGNATED_INITIALIZER;
+/**
+  Network Request to get order details from Juspay for JuspaySafeBrowser.
+  @param order                 Order model with all the mandatory fields set.
+  @param card                  Card with all the proper validations done.
+  @param jusPayRequestCallback Callback for Asynchronous network call.
+*/
+- (nonnull instancetype)initWithOrder:(Order * _Nonnull)order card:(Card * _Nonnull)card jusPayRequestCallBack:(id <JuspayRequestCallBack> _Nonnull)jusPayRequestCallBack OBJC_DESIGNATED_INITIALIZER;
 /**
   Network request for UPISubmission Submission
   @param order                 {@link Order}
