@@ -194,7 +194,8 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
                 self.showAlert(errorMessage: order.isValidWebhook().error + order.isValidTransactionID().error)
             }
         }
-        if order.isValidToCreateOrder().validity {
+        
+        if order.isValid().validity {
             DispatchQueue.main.async {
                 self.spinner.show()
             }
