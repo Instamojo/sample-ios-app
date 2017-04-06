@@ -11,32 +11,19 @@
 		58B158A21E7AB9C200AAB87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A11E7AB9C200AAB87A /* AppDelegate.swift */; };
 		58B158A41E7AB9C700AAB87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A31E7AB9C700AAB87A /* ViewController.swift */; };
 		58B158AF1E7AB9EA00AAB87A /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158AE1E7AB9EA00AAB87A /* PaymentOptions.swift */; };
-		58B158B91E7ABB0600AAB87A /* Instamojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B71E7ABAFF00AAB87A /* Instamojo.framework */; };
 		58B158BC1E7ABB0A00AAB87A /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */; };
 		58B158BE1E7ABB1000AAB87A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */; };
 		58B158C01E7ABB1400AAB87A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */; };
-		58B158C31E7ABC6600AAB87A /* Instamojo.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B158B71E7ABAFF00AAB87A /* Instamojo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */; };
 		58B158D41E7AC4D900AAB87A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D21E7AC4D900AAB87A /* Crashlytics.framework */; };
 		58B158D51E7AC4D900AAB87A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B158D31E7AC4D900AAB87A /* Fabric.framework */; };
 		58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B158A81E7AB9DD00AAB87A /* Assets.xcassets */; };
 		58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B158AA1E7AB9E100AAB87A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		58B158C21E7ABC6000AAB87A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				58B158C31E7ABC6600AAB87A /* Instamojo.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		040C9C941065F4F0711A185F /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
+		3A78988A133CE76F6D7637E7 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		4074C317EAA0D44748DF8944 /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		586740921E82785000E8148E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		58B158881E7AB96300AAB87A /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B158A11E7AB9C200AAB87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,8 +35,6 @@
 		58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		58B158B71E7ABAFF00AAB87A /* Instamojo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instamojo.framework; sourceTree = "<group>"; };
-		58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JuspaySafeBrowser.bundle; sourceTree = "<group>"; };
 		58B158D21E7AC4D900AAB87A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		58B158D31E7AC4D900AAB87A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +46,6 @@
 			files = (
 				58B158D41E7AC4D900AAB87A /* Crashlytics.framework in Frameworks */,
 				58B158D51E7AC4D900AAB87A /* Fabric.framework in Frameworks */,
-				58B158B91E7ABB0600AAB87A /* Instamojo.framework in Frameworks */,
 				58B158BE1E7ABB1000AAB87A /* SystemConfiguration.framework in Frameworks */,
 				58B158BC1E7ABB0A00AAB87A /* JavaScriptCore.framework in Frameworks */,
 				58B158C01E7ABB1400AAB87A /* CoreTelephony.framework in Frameworks */,
@@ -74,10 +58,10 @@
 		58B1587F1E7AB96300AAB87A = {
 			isa = PBXGroup;
 			children = (
-				58B158CD1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle */,
 				58B1588A1E7AB96300AAB87A /* Sample */,
 				58B158891E7AB96300AAB87A /* Products */,
 				58B158B01E7ABAD000AAB87A /* Frameworks */,
+				88219E762EA8E9B7670B03B7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,12 +92,21 @@
 			children = (
 				58B158D21E7AC4D900AAB87A /* Crashlytics.framework */,
 				58B158D31E7AC4D900AAB87A /* Fabric.framework */,
-				58B158B71E7ABAFF00AAB87A /* Instamojo.framework */,
 				58B158B51E7ABADA00AAB87A /* SystemConfiguration.framework */,
 				58B158B31E7ABAD400AAB87A /* JavaScriptCore.framework */,
 				58B158B11E7ABAD000AAB87A /* CoreTelephony.framework */,
+				4074C317EAA0D44748DF8944 /* Pods_Sample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88219E762EA8E9B7670B03B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A78988A133CE76F6D7637E7 /* Pods-Sample.debug.xcconfig */,
+				040C9C941065F4F0711A185F /* Pods-Sample.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,12 +116,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B1589A1E7AB96300AAB87A /* Build configuration list for PBXNativeTarget "Sample" */;
 			buildPhases = (
+				AC6E19DAA52648C92E02C6D3 /* [CP] Check Pods Manifest.lock */,
 				58B158841E7AB96300AAB87A /* Sources */,
 				58B158851E7AB96300AAB87A /* Frameworks */,
 				58B158861E7AB96300AAB87A /* Resources */,
-				58B158C21E7ABC6000AAB87A /* CopyFiles */,
 				58B158D91E7AC52100AAB87A /* ShellScript */,
 				5842FFCA1E80FBC2003C1FF5 /* ShellScript */,
+				F77F2A96285AE16AF371A9D7 /* [CP] Embed Pods Frameworks */,
+				922BDFDE2F893EBB9FBC845A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,7 +176,6 @@
 			files = (
 				58B158DB1E7AC70800AAB87A /* Assets.xcassets in Resources */,
 				58B158DC1E7AC70800AAB87A /* LaunchScreen.storyboard in Resources */,
-				58B158CE1E7ABFEB00AAB87A /* JuspaySafeBrowser.bundle in Resources */,
 				586740931E82785000E8148E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +208,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 07ad6ec4919f509fb3b675750673a5c630614723 d90b71c648f26bc9c8855e9e3e4c36ca28928285735ebf774e77028d9169068e";
+		};
+		922BDFDE2F893EBB9FBC845A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sample/Pods-Sample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC6E19DAA52648C92E02C6D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F77F2A96285AE16AF371A9D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sample/Pods-Sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -326,6 +365,7 @@
 		};
 		58B1589B1E7AB96300AAB87A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A78988A133CE76F6D7637E7 /* Pods-Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -347,6 +387,7 @@
 		};
 		58B1589C1E7AB96300AAB87A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 040C9C941065F4F0711A185F /* Pods-Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
