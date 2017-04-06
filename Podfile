@@ -5,5 +5,5 @@ target 'Sample' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   # Pods for Sample
- pod 'Instamojo', :git => 'https://Sukanya_raj@bitbucket.org/innoventes/instamojo-ios-sdk.git', :branch => 'development'
+ pod 'Instamojo', :git => 'https://github.com/Instamojo/ios-sdk.git', :branch => 'development'
 end
