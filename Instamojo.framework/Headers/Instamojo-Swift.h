@@ -261,17 +261,24 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL instance;)
 + (BOOL)instance;
 + (void)setInstance:(BOOL)value;
 /**
-  Sets the base url for all network calls
-  @param baseUrl URl
+  Initizalise Instamojo
 */
-+ (void)initialize SWIFT_METHOD_FAMILY(none);
++ (void)setup;
 + (void)enableLogWithOption:(BOOL)option;
 /**
   Sets the base url for all network calls
-  @param baseUrl URl
+  @param url String
 */
 + (void)setBaseUrlWithUrl:(NSString * _Nonnull)url;
+/**
+  Invoke Pre Created Payment UI
+  @param order Order
+*/
 + (void)invokePaymentOptionsViewWithOrder:(Order * _Nonnull)order;
+/**
+  Invoke Payment For Custom UI
+  @param params BrowserParams
+*/
 + (void)makePaymentWithParams:(BrowserParams * _Nonnull)params;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -453,35 +460,35 @@ SWIFT_CLASS("_TtC9Instamojo7Request")
 /**
   Network Request to create an order ID from Instamojo server.
   @param order                Order model with all the mandatory fields set.
-  @param orderRequestCallBack Callback interface for the Asynchronous Network Call.
+  @param orderRequestCallBack OrderRequestCallBack interface for the Asynchronous Network Call.
 */
 - (nonnull instancetype)initWithOrder:(Order * _Nonnull)order orderRequestCallBack:(id <OrderRequestCallBack> _Nonnull)orderRequestCallBack OBJC_DESIGNATED_INITIALIZER;
 /**
   Network Request to get order details from Juspay for JuspaySafeBrowser.
   @param order                 Order model with all the mandatory fields set.
   @param card                  Card with all the proper validations done.
-  @param jusPayRequestCallback Callback for Asynchronous network call.
+  @param jusPayRequestCallBack JusPayRequestCallBack for Asynchronous network call.
 */
 - (nonnull instancetype)initWithOrder:(Order * _Nonnull)order card:(Card * _Nonnull)card jusPayRequestCallBack:(id <JuspayRequestCallBack> _Nonnull)jusPayRequestCallBack OBJC_DESIGNATED_INITIALIZER;
 /**
   Network request for UPISubmission Submission
-  @param order                 {@link Order}
+  @param order                 Order
   @param virtualPaymentAddress String
-  @param upiCallback           {@link UPICallback}
+  @param upiCallback           UPICallback
 */
 - (nonnull instancetype)initWithOrder:(Order * _Nonnull)order virtualPaymentAddress:(NSString * _Nonnull)virtualPaymentAddress upiCallBack:(id <UPICallBack> _Nonnull)upiCallBack OBJC_DESIGNATED_INITIALIZER;
 /**
   Network Request to check the status of the transaction
-  @param order                 {@link Order}
-  @param upiSubmissionResponse {@link UPISubmissionResponse}
-  @param upiCallback           {@link UPICallback}
+  @param order                 Order
+  @param upiSubmissionResponse UPISubmissionResponse
+  @param upiCallback           UPICallback
 */
 - (nonnull instancetype)initWithOrder:(Order * _Nonnull)order upiSubmissionResponse:(UPISubmissionResponse * _Nonnull)upiSubmissionResponse upiCallback:(id <UPICallBack> _Nonnull)upiCallback OBJC_DESIGNATED_INITIALIZER;
 /**
   Network request to fetch the order
   @param accessToken           String
   @param orderID               String
-  @param orderRequestCallBack  {@link OrderRequestCallBack}
+  @param orderRequestCallBack  OrderRequestCallBack
 */
 - (nonnull instancetype)initWithOrderID:(NSString * _Nonnull)orderID accessToken:(NSString * _Nonnull)accessToken orderRequestCallBack:(id <OrderRequestCallBack> _Nonnull)orderRequestCallBack OBJC_DESIGNATED_INITIALIZER;
 - (void)execute;
