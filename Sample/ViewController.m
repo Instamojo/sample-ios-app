@@ -284,6 +284,7 @@ float keyboardHeight;
 -(void)onFinishWithOrder:(Order *)order error:(NSString *)error{
     if (error.length != 0){
         dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.payButton.enabled = true;
             [spinner hide];
             [self showAlert:error];
         });
