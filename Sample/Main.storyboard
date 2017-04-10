@@ -301,7 +301,7 @@
         <!--Payment Options-->
         <scene sceneID="wv6-z7-zqm">
             <objects>
-                <viewController storyboardIdentifier="juspay" title="Payment Options" id="lwh-l6-pDv" customClass="PaymentOptions" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="paymentOptions" title="Payment Options" id="lwh-l6-pDv" customClass="PaymentOptions" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x94-28-K21"/>
                         <viewControllerLayoutGuide type="bottom" id="l0d-Vb-lU4"/>

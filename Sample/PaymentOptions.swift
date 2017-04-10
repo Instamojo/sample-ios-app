@@ -38,6 +38,7 @@ class PaymentOptions : UIViewController, JuspayRequestCallBack {
         if order.netBankingOptions != nil {
             banks = order.netBankingOptions.banks
         }
+        
     }
     
     @IBAction func pay(_ sender: UIButton) {
