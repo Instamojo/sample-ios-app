@@ -30,7 +30,7 @@ If you do not have the credentials yet, raise a support ticket so that we could 
 send you the credentials in a jiffy.
 
 ## How to Generate Access Token?
-Please check the Sample Server [documentation](sample-sdk-server/Readme.md#generating-access-token) on how to generate access_token using `client_id` and `client_secret`
+Please check the Sample Server [documentation](https://github.com/Instamojo/sample-sdk-server/blob/master/Readme.md#generating-access-token) on how to generate access_token using `client_id` and `client_secret`
 
 ## What is this `Transaction ID` I keep hearing about?
 Well, transaction ID is a unique ID for an Order. Using this transaction ID, 
@@ -42,7 +42,7 @@ The transaction ID should be unique for every Order.
 Yes, we do have a sample server written in Google Go. Sample uses the Sample server to get `access_token` and `transaction_id`
 to create an `Order`.
 
-You can check the documentation for the Sample Server [here](sample-sdk-server/Readme.md)
+You can check the documentation for the Sample Server [here](https://github.com/Instamojo/sample-sdk-server/blob/master/Readme.md)
 
 ## I have few more queries
 Well, if this documentation doesn't answer any specific questions regarding the Sample App, please raise support ticket. We will respond ASAP.
