@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04ACC7EFFC0B0A92E5B5A94B /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4074C317EAA0D44748DF8944 /* Pods_Sample.framework */; };
 		586740931E82785000E8148E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586740921E82785000E8148E /* Main.storyboard */; };
 		58B158A21E7AB9C200AAB87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A11E7AB9C200AAB87A /* AppDelegate.swift */; };
 		58B158A41E7AB9C700AAB87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B158A31E7AB9C700AAB87A /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 				58B158BE1E7ABB1000AAB87A /* SystemConfiguration.framework in Frameworks */,
 				58B158BC1E7ABB0A00AAB87A /* JavaScriptCore.framework in Frameworks */,
 				58B158C01E7ABB1400AAB87A /* CoreTelephony.framework in Frameworks */,
+				04ACC7EFFC0B0A92E5B5A94B /* Pods_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

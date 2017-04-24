@@ -2,21 +2,21 @@ PODS:
   - Instamojo (1.0.0)
 
 DEPENDENCIES:
-  - Instamojo (from `https://Sukanya_raj@bitbucket.org/innoventes/instamojo-ios-sdk.git`, branch `development`)
+  - Instamojo (from `https://github.com/Instamojo/ios-sdk.git`, tag `1.0.0`)
 
 EXTERNAL SOURCES:
   Instamojo:
-    :branch: development
-    :git: https://Sukanya_raj@bitbucket.org/innoventes/instamojo-ios-sdk.git
+    :git: https://github.com/Instamojo/ios-sdk.git
+    :tag: 1.0.0
 
 CHECKOUT OPTIONS:
   Instamojo:
-    :commit: e48b7e45a30a84253f3642af25d4064b31ab8154
-    :git: https://Sukanya_raj@bitbucket.org/innoventes/instamojo-ios-sdk.git
+    :git: https://github.com/Instamojo/ios-sdk.git
+    :tag: 1.0.0
 
 SPEC CHECKSUMS:
-  Instamojo: f49a9ac97f08cb3c9138d4a961fb2ded097d1b45
+  Instamojo: be0dadf2c9be8192f58f8c0bca3090e941e7578d
 
-PODFILE CHECKSUM: 6e3372526f5456e37ca2f76a0df2a2813a39a7ca
+PODFILE CHECKSUM: c73e2a4f997bfa5bf34273992d206fea003e1345
 
 COCOAPODS: 1.2.0
