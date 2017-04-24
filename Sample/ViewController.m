@@ -101,14 +101,20 @@ float keyboardHeight;
     if (userCancelled != nil) {
         [self showAlert:@"Transaction cancelled by user, back button was pressed."];
     }
+    
     NSObject *onRedirectURL = [defaults objectForKey:@"ON-REDIRECT-URL"];
     if (onRedirectURL != nil){
-        [self checkPaymentStatus];
-        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self checkPaymentStatus];
+        });
     }
+    
     NSObject *cancelledOnVerify = [defaults objectForKey:@"USER-CANCELLED-ON-VERIFY"];
     if (cancelledOnVerify != nil){
         [self showAlert:@"Transaction cancelled by user when trying to verify payment."];
+          dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self checkPaymentStatus];
+          });
     }
 }
 
@@ -298,6 +304,7 @@ float keyboardHeight;
 
 -(void)checkPaymentStatus{
     [spinner show];
+
     
     if (accessToken == nil){
         return;
@@ -324,6 +331,8 @@ float keyboardHeight;
                  dispatch_async(dispatch_get_main_queue(), ^(void){
                      [self refundPayment:amount];
                  });
+             }else{
+                 [self showAlert:@"Transaction Pending"];
              }
          }else{
              [self showAlert:@"Failed to fetch transaction status"];
