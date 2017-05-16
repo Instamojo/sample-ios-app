@@ -1,6 +1,6 @@
 {
   "name": "Instamojo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "summary": "Instamojo iOS SDK",
   "homepage": "https://www.instamojo.com",
   "license": "LGPL",
@@ -8,8 +8,8 @@
     "Instamojo": "sukanya@innoventes.co"
   },
   "source": {
-    "git": "https://bitbucket.org/innoventes/instamojo-ios-sdk.git",
-    "tag": "1.0.0"
+    "git": "https://github.com/Instamojo/ios-sdk.git",
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "8.0"
