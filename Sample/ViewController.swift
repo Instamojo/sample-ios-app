@@ -40,7 +40,6 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultData()
         addNotificationToRecievePaymentCompletion()
         
        //Add Loader/Spinner To the current view
@@ -63,14 +62,6 @@ class ViewController: UIViewController, OrderRequestCallBack, UITextFieldDelegat
 
         //Set observer to handle keybaord navigations
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-    }
-    
-    func setDefaultData() {
-        nameTextField.text = "Sukanya"
-        emailTextField.text = "sukanya@innoventestech.com"
-        phoneNumberTextfield.text = "9952620490"
-        amountTextField.text = "10.00"
-        descriptionTextField.text = "Test Description"
     }
     
     func addNotificationToRecievePaymentCompletion(){
