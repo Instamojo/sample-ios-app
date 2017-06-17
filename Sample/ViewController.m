@@ -23,7 +23,6 @@ float keyboardHeight;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setDefaultData];
     [self addNotificationToRecievePaymentCompletion];
     
     //Add Loader/Spinner to the current view
@@ -81,14 +80,6 @@ float keyboardHeight;
 
 - (void)keyboardWillShow:(NSNotification *) notification {
     keyboardHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height - 100;
-}
-
-- (void)setDefaultData {
-    self.nameTextField.text = @"Sukanya";
-    self.emailTextField.text = @"sukanya@innoventestech.com";
-    self.phoneNumberTextField.text = @"9952620490";
-    self.amountTextField.text = @"10.00";
-    self.descriptionTextField.text = @"Test Description";
 }
 
 - (void)addNotificationToRecievePaymentCompletion {
